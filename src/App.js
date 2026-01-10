@@ -1,24 +1,43 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 
 function App() {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  const toggleSidebar = () => {
+    setSidebarOpen(!sidebarOpen);
+  };
+
+  const closeSidebar = () => {
+    setSidebarOpen(false);
+  };
+
   return (
     <div className="App">
       {/* Navigation */}
       <nav className="navbar">
         <div className="nav-container">
-          <div className="logo">
+        <div className="logo">
             <img src={`${process.env.PUBLIC_URL}/Kopano_Vertex__1_-removebg-preview.png`} alt="Kopano_Vertex Logo" className="logo-img" />
           </div>
-          <ul className="nav-menu">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#team">Team</a></li>
-            <li><a href="#contact">Contact</a></li>
+          <button className="menu-toggle" onClick={toggleSidebar} aria-label="Toggle menu">
+            <span className={sidebarOpen ? 'hamburger open' : 'hamburger'}>
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+          </button>
+          <ul className={`nav-menu ${sidebarOpen ? 'open' : ''}`}>
+
+            <li><a href="#home" onClick={closeSidebar}>Home</a></li>
+            <li><a href="#about" onClick={closeSidebar}>About</a></li>
+            <li><a href="#projects" onClick={closeSidebar}>Projects</a></li>
+            <li><a href="#team" onClick={closeSidebar}>Team</a></li>
+            <li><a href="#contact" onClick={closeSidebar}>Contact</a></li>
           </ul>
         </div>
       </nav>
+      <div className={`sidebar-overlay ${sidebarOpen ? 'active' : ''}`} onClick={closeSidebar}></div>
 
       {/* Hero Section */}
       <section id="home" className="hero">
@@ -116,12 +135,6 @@ function App() {
                 convenient non-emergency care. By bringing healthcare services directly to 
                 patients' homes, Health_Connect eliminates barriers to access and provides 
                 a seamless, user-friendly experience.
-              </p>
-              <h4>Integration Requirements</h4>
-              <p>
-                <strong>Collections & Disbursements:</strong> We require a "Closed-Loop Digital 
-                Wallet" integration. The gateway must facilitate the movement of fiat currency 
-                into and out of our custodial bank account to fund user wallets within the app.
               </p>
             </div>
           </div>
@@ -289,9 +302,11 @@ function App() {
             </div>
             <div className="team-grid">
               <div className="team-member">
-                <div className="member-avatar">PH</div>
+                <div className="member-avatar">
+                  <img src={`${process.env.PUBLIC_URL}/48633-removebg-preview.png`} alt="Petrus Haixula" className="member-avatar-img" />
+                </div>
                 <h4>Petrus Haixula</h4>
-                <p className="role">Founder & CEO (80% Owner)</p>
+                <p className="role">CEO - Co Founder</p>
                 <p className="bio">
                   Seasoned IT professional with over 8 years of experience and advanced 
                   qualifications in technology, business, and blockchain innovation.
@@ -299,8 +314,8 @@ function App() {
               </div>
               <div className="team-member">
                 <div className="member-avatar">WP</div>
-                <h4>Wellem Paulus</h4>
-                <p className="role">Co-Founder (20% Owner)</p>
+                <h4>Wilhelm Paulus</h4>
+                <p className="role">Head of Technology and Innovation - Co Founder</p>
                 <p className="bio">
                   Strategic partner contributing to Kopano_Vertex Trading's vision of 
                   technological innovation and local empowerment in Namibia.

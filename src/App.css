@@ -46,16 +46,65 @@ body {
 .nav-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 1rem 20px;
+  padding: 0.5rem 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
+.logo {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
 .logo-img {
-  height: 50px;
+  height: 80px;
   width: auto;
   object-fit: contain;
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  z-index: 1001;
+}
+
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  width: 25px;
+  height: 20px;
+  justify-content: space-between;
+  transition: all 0.3s ease;
+}
+
+.hamburger span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background: #333;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+.hamburger.open span:nth-child(1) {
+  transform: rotate(45deg) translate(8px, 8px);
+}
+
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -7px);
+}
+
+.sidebar-overlay {
+  display: none;
 }
 
 .nav-menu {
@@ -845,6 +894,14 @@ section {
   box-shadow: 0 8px 20px rgba(0, 102, 204, 0.3);
   transition: all 0.4s ease;
   border: 4px solid white;
+  overflow: hidden;
+}
+
+.member-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
 }
 
 .team-member:hover .member-avatar {
@@ -1069,6 +1126,111 @@ section {
 }
 
 @media (max-width: 768px) {
+  .navbar {
+    height: auto;
+  }
+
+  .nav-container {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 20px;
+  }
+
+  .logo {
+    display: flex;
+  }
+
+  .logo-img {
+    height: 60px;
+  }
+
+  .menu-toggle {
+    display: block;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .nav-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 280px;
+    background: white;
+    box-shadow: 2px 0 20px rgba(0, 0, 0, 0.15);
+    flex-direction: column;
+    gap: 0;
+    padding: 2rem 0 2rem;
+    transform: translateX(-100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1001;
+    overflow-y: auto;
+    list-style: none;
+  }
+
+    .sidebar-logo {
+    display: block;
+    padding: 2rem;
+    text-align: center;
+    border-bottom: 2px solid #e8ecf0;
+    margin-bottom: 1rem;
+  }
+
+  .sidebar-logo-img {
+    height: 100px;
+    width: auto;
+    object-fit: contain;
+  }
+
+  .nav-menu.open {
+    transform: translateX(0);
+  }
+
+  .nav-menu li {
+    width: 100%;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .nav-menu a {
+    display: block;
+    padding: 1.2rem 2rem;
+    font-size: 1.1rem;
+    width: 100%;
+    color: #333;
+  }
+
+  .nav-menu a::after {
+    display: none;
+  }
+
+  .nav-menu a:hover {
+    background: #f8f9fa;
+    color: #0066cc;
+  }
+
+  .sidebar-overlay {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+
+  .sidebar-overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
   .hero-title {
     font-size: 2rem;
   }
@@ -1079,11 +1241,6 @@ section {
 
   .section-title {
     font-size: 2rem;
-  }
-
-  .nav-menu {
-    flex-direction: column;
-    gap: 0.5rem;
   }
 
   .hero-buttons {

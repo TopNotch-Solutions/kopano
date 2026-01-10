@@ -13,8 +13,7 @@ function App() {
           <ul className="nav-menu">
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#market">Market</a></li>
+            <li><a href="#projects">Projects</a></li>
             <li><a href="#team">Team</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
@@ -24,14 +23,14 @@ function App() {
       {/* Hero Section */}
       <section id="home" className="hero">
         <div className="hero-content">
-          <h1 className="hero-title">Revolutionizing Transportation in Namibia</h1>
+          <h1 className="hero-title">Kopano_Vertex Trading</h1>
           <p className="hero-subtitle">
-            Safe, reliable, and efficient ride-hailing and goods transportation services 
-            connecting passengers with verified drivers across Namibia's growing towns.
+            A Namibian technology company committed to innovation and local empowerment, 
+            developing cutting-edge solutions that transform industries and improve lives.
           </p>
           <div className="hero-buttons">
-            <a href="#services" className="btn btn-primary">Our Services</a>
-            <a href="#contact" className="btn btn-secondary">Get Started</a>
+            <a href="#projects" className="btn btn-primary">Our Projects</a>
+            <a href="#contact" className="btn btn-secondary">Get In Touch</a>
           </div>
         </div>
         <div className="hero-image">
@@ -46,37 +45,41 @@ function App() {
         </div>
       </section>
 
-      {/* About Section */}
+      {/* About Company Section */}
       <section id="about" className="about">
         <div className="container">
-          <h2 className="section-title">About NAMIBride</h2>
+          <h2 className="section-title">About Kopano_Vertex Trading</h2>
           <div className="about-content">
             <div className="about-text">
               <p className="lead">
-                NAMIBride is a Namibian-owned and operated technology company poised to 
-                revolutionize the public transportation and logistics sector in the nation's 
-                growing towns.
+                Kopano_Vertex Trading cc is a Namibian-owned and operated technology company 
+                headquartered in Windhoek, Namibia, dedicated to creating innovative digital 
+                solutions that address critical gaps in the market.
               </p>
               <p>
-                Our mobile platform connects passengers with verified drivers for safe, reliable, 
-                and efficient ride-hailing and goods transportation services. Our mission is to 
-                address the critical gap in the market for structured, digitally-enabled transport 
-                solutions.
+                Our mission is to leverage cutting-edge technology to transform traditional 
+                industries, making essential services more accessible, efficient, and reliable 
+                for all Namibians. We are committed to technological innovation, local empowerment, 
+                and building solutions that truly serve our community.
               </p>
               <p>
-                By leveraging a prepaid driver wallet system, dynamic pricing, and robust safety 
-                features, including innovative AI integrations with the Gemini API, NAMIBride will 
-                offer a superior experience. We integrate with DPO Pay to handle all transactions 
-                securely and efficiently.
+                Currently, we are developing and operating two flagship projects: Health_Connect, 
+                a revolutionary telemedicine platform, and NAMIBride, a comprehensive ride-hailing 
+                and logistics solution. Both projects exemplify our commitment to using technology 
+                to solve real-world problems and improve the quality of life for Namibians.
               </p>
               <div className="stats">
                 <div className="stat-item">
-                  <h3>6</h3>
-                  <p>Target Towns</p>
+                  <h3>2</h3>
+                  <p>Active Projects</p>
                 </div>
                 <div className="stat-item">
-                  <h3>300K+</h3>
-                  <p>Target Population</p>
+                  <h3>100%</h3>
+                  <p>Namibian Owned</p>
+                </div>
+                <div className="stat-item">
+                  <h3>Windhoek</h3>
+                  <p>Headquarters</p>
                 </div>
               </div>
             </div>
@@ -84,48 +87,137 @@ function App() {
         </div>
       </section>
 
-      {/* Services Section */}
-      <section id="services" className="services">
+      {/* Projects Section */}
+      <section id="projects" className="projects">
         <div className="container">
-          <h2 className="section-title">Our Services</h2>
-          <div className="services-grid">
-            <div className="service-card">
-              <div className="service-icon">🚗</div>
-              <h3>Ride-Hailing Service</h3>
+          <h2 className="section-title">Our Projects</h2>
+          
+          {/* Health_Connect Project */}
+          <div className="project-card">
+            <div className="project-header">
+              <div className="project-title-section">
+                <h3>Health_Connect</h3>
+                <div className="project-badges">
+                  <span className="badge badge-industry">HealthTech / Telemedicine</span>
+                  <span className="badge badge-status">In Development (Launch Pending)</span>
+                </div>
+              </div>
+            </div>
+            <div className="project-content">
+              <h4>Business Summary</h4>
               <p>
-                Connect with verified drivers for safe and reliable transportation across 
-                Namibia's major towns. Professional driver verification ensures your safety.
+                Health_Connect is a mobile and web-based application designed to bridge the gap 
+                between patients and healthcare professionals in Namibia. It operates on an 
+                "Uber-for-Healthcare" model where patients request on-demand home visits from 
+                qualified nurses and doctors.
+              </p>
+              <p>
+                The platform targets elderly patients, parents, and professionals requiring 
+                convenient non-emergency care. By bringing healthcare services directly to 
+                patients' homes, Health_Connect eliminates barriers to access and provides 
+                a seamless, user-friendly experience.
+              </p>
+              <h4>Integration Requirements</h4>
+              <p>
+                <strong>Collections & Disbursements:</strong> We require a "Closed-Loop Digital 
+                Wallet" integration. The gateway must facilitate the movement of fiat currency 
+                into and out of our custodial bank account to fund user wallets within the app.
               </p>
             </div>
-            <div className="service-card">
-              <div className="service-icon">📦</div>
-              <h3>Goods Transportation</h3>
-              <p>
-                Efficient delivery and transportation services for small businesses and 
-                individuals. Get your goods where they need to be, when they need to be there.
-              </p>
+          </div>
+
+          {/* Health_Connect in Action */}
+          <section className="health-images">
+            <div className="container">
+              <h2 className="section-title">Health_Connect in Action</h2>
+              <div className="images-grid">
+                <div className="image-wrapper">
+                  <img 
+                    src={`${process.env.PUBLIC_URL}/h1.JPG`} 
+                    alt="Health_Connect Screenshot 1" 
+                    className="project-image"
+                  />
+                </div>
+                <div className="image-wrapper">
+                  <img 
+                    src={`${process.env.PUBLIC_URL}/h2.JPG`} 
+                    alt="Health_Connect Screenshot 2" 
+                    className="project-image"
+                  />
+                </div>
+                <div className="image-wrapper">
+                  <img 
+                    src={`${process.env.PUBLIC_URL}/h3.PNG`} 
+                    alt="Health_Connect Screenshot 3" 
+                    className="project-image"
+                  />
+                </div>
+                <div className="image-wrapper">
+                  <img 
+                    src={`${process.env.PUBLIC_URL}/h4.PNG`} 
+                    alt="Health_Connect Screenshot 4" 
+                    className="project-image"
+                  />
+                </div>
+              </div>
             </div>
-            <div className="service-card">
-              <div className="service-icon">🚛</div>
-              <h3>Fleet Management Portal</h3>
-              <p>
-                Comprehensive fleet management solution for business owners. Track, manage, 
-                and optimize your vehicle fleet with our advanced portal.
-              </p>
+          </section>
+
+          {/* NAMIBride Project */}
+          <div className="project-card">
+            <div className="project-header">
+              <div className="project-title-section">
+                <h3>NAMIBride</h3>
+                <div className="project-badges">
+                  <span className="badge badge-industry">Transportation / Ride-Hailing</span>
+                  <span className="badge badge-active">Operating</span>
+                </div>
+              </div>
             </div>
-            <div className="service-card">
-              <div className="service-icon">🛡️</div>
-              <h3>Safety Features</h3>
+            <div className="project-content">
+              <h4>Business Summary</h4>
               <p>
-                Panic buttons, immutable trip histories, and professional driver verification 
-                ensure your safety is our top priority.
+                NAMIBride is a ride-hailing and logistics platform designed to formalize the 
+                public transport sector in Namibia. It connects passengers with verified drivers 
+                for safe transport and goods delivery across Namibia's growing towns.
+              </p>
+              <p>
+                The platform features AI-integrated safety verification (Gemini API) and 
+                comprehensive fleet management portals. NAMIBride addresses the critical gap 
+                in the market for structured, digitally-enabled transport solutions, offering 
+                safe, reliable, and efficient services.
+              </p>
+              <h4>Key Features</h4>
+              <div className="features-grid">
+                <div className="feature-item">
+                  <h5>Ride-Hailing Service</h5>
+                  <p>Connect with verified drivers for safe and reliable transportation</p>
+                </div>
+                <div className="feature-item">
+                  <h5>Goods Transportation</h5>
+                  <p>Efficient delivery services for businesses and individuals</p>
+                </div>
+                <div className="feature-item">
+                  <h5>Fleet Management</h5>
+                  <p>Comprehensive portal for business owners to manage their fleets</p>
+                </div>
+                <div className="feature-item">
+                  <h5>Safety Features</h5>
+                  <p>AI-powered verification, panic buttons, and trip histories</p>
+                </div>
+              </div>
+              <h4>Target Markets</h4>
+              <p>
+                NAMIBride targets urban populations in six key Namibian towns: Walvis Bay, 
+                Swakopmund, Oshakati, Ongwediva, Ondangwa, and Windhoek, with a combined 
+                urban population of over 300,000.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Videos Section */}
+      {/* Videos Section - NAMIBride */}
       <section id="videos" className="videos">
         <div className="container">
           <h2 className="section-title">NAMIBride in Action</h2>
@@ -182,59 +274,17 @@ function App() {
         </div>
       </section>
 
-      {/* Market Section */}
-      <section id="market" className="market">
-        <div className="container">
-          <h2 className="section-title">Market Opportunity</h2>
-          <div className="market-content">
-            <div className="market-text">
-              <h3>Target Markets</h3>
-              <p>
-                NAMIBride targets urban populations in six key Namibian towns: Walvis Bay, 
-                Swakopmund, Oshakati, Ongwediva, Ondangwa, and Windhoek. With a combined 
-                urban population of over 300,000, we're addressing a critical need for 
-                structured, digitally-enabled transport solutions.
-              </p>
-              <h3>Customer Segments</h3>
-              <ul className="segment-list">
-                <li>Youth and working-class commuters</li>
-                <li>Tourists exploring Namibia</li>
-                <li>Small businesses requiring logistics</li>
-                <li>Fleet owners seeking management solutions</li>
-              </ul>
-              <h3>Competitive Advantage</h3>
-              <p>
-                While competitors like Yango and inDrive exist, NAMIBride differentiates itself 
-                through fleet management capabilities, AI-powered features, deep local market 
-                understanding, and comprehensive safety measures including driver verification 
-                and immutable route histories.
-              </p>
-            </div>
-            <div className="market-visual">
-              <div className="towns-grid">
-                <div className="town-item">Windhoek</div>
-                <div className="town-item">Walvis Bay</div>
-                <div className="town-item">Swakopmund</div>
-                <div className="town-item">Oshakati</div>
-                <div className="town-item">Ongwediva</div>
-                <div className="town-item">Ondangwa</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Team Section */}
       <section id="team" className="team">
         <div className="container">
-          <h2 className="section-title">Our Organization</h2>
+          <h2 className="section-title">Our Team</h2>
           <div className="team-content">
             <div className="company-info">
               <h3>Kopano_Vertex Trading cc</h3>
               <p className="location">📍 Windhoek, Namibia</p>
               <p>
-                NAMIBride is developed by Kopano_Vertex Trading cc, a Namibian company committed 
-                to technological innovation and local empowerment.
+                Led by experienced professionals with deep expertise in technology, business, 
+                and innovation, our team is dedicated to building solutions that make a difference.
               </p>
             </div>
             <div className="team-grid">
@@ -252,35 +302,10 @@ function App() {
                 <h4>Wellem Paulus</h4>
                 <p className="role">Co-Founder (20% Owner)</p>
                 <p className="bio">
-                  Strategic partner contributing to NAMIBride's vision of revolutionizing 
-                  transportation in Namibia.
+                  Strategic partner contributing to Kopano_Vertex Trading's vision of 
+                  technological innovation and local empowerment in Namibia.
                 </p>
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Future Section */}
-      <section className="future">
-        <div className="container">
-          <h2 className="section-title">The Future</h2>
-          <div className="future-content">
-            <div className="future-item">
-              <h3>📈 Expansion</h3>
-              <p>NAMIBride aims to expand nationwide, reaching all major Namibian towns and eventually expanding into neighboring countries.</p>
-            </div>
-            <div className="future-item">
-              <h3>⚡ Electric Vehicles</h3>
-              <p>Integration of electric vehicle fleets to promote sustainable transportation solutions.</p>
-            </div>
-            <div className="future-item">
-              <h3>🤖 AI Innovation</h3>
-              <p>Introduction of AI-driven predictive transport planning to optimize routes and improve efficiency.</p>
-            </div>
-            <div className="future-item">
-              <h3>🎯 2030 Vision</h3>
-              <p>By 2030, operate in all major Namibian towns and expand into neighboring countries, becoming the leading transportation platform in Southern Africa.</p>
             </div>
           </div>
         </div>
@@ -292,10 +317,10 @@ function App() {
           <h2 className="section-title">Get In Touch</h2>
           <div className="contact-content">
             <div className="contact-info">
-              <h3>Ready to Transform Transportation?</h3>
+              <h3>Ready to Connect?</h3>
               <p>
-                Join us in revolutionizing how Namibia moves. Whether you're a passenger, 
-                driver, or business owner, NAMIBride has something for you.
+                Whether you're interested in our projects, potential partnerships, or have 
+                questions about our services, we'd love to hear from you.
               </p>
               <div className="contact-details">
                 <p><strong>Company:</strong> Kopano_Vertex Trading cc</p>
@@ -312,22 +337,21 @@ function App() {
         <div className="container">
           <div className="footer-content">
             <div className="footer-section">
-              <h3>NAMIBride</h3>
-              <p>Revolutionizing transportation in Namibia</p>
+              <h3>Kopano_Vertex Trading</h3>
+              <p>Innovative technology solutions for Namibia</p>
             </div>
             <div className="footer-section">
               <h4>Quick Links</h4>
               <ul>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#market">Market</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#team">Team</a></li>
               </ul>
             </div>
             <div className="footer-section">
               <h4>Company</h4>
               <ul>
-                <li><a href="#team">Our Team</a></li>
                 <li><a href="#contact">Contact</a></li>
               </ul>
             </div>

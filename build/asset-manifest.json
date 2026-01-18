@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/TopNotch-Solutions/kopano/static/css/main.f7da1d86.css",
+    "main.js": "/TopNotch-Solutions/kopano/static/js/main.956ec9c3.js",
+    "static/js/453.f92041e3.chunk.js": "/TopNotch-Solutions/kopano/static/js/453.f92041e3.chunk.js",
+    "index.html": "/TopNotch-Solutions/kopano/index.html",
+    "main.f7da1d86.css.map": "/TopNotch-Solutions/kopano/static/css/main.f7da1d86.css.map",
+    "main.956ec9c3.js.map": "/TopNotch-Solutions/kopano/static/js/main.956ec9c3.js.map",
+    "453.f92041e3.chunk.js.map": "/TopNotch-Solutions/kopano/static/js/453.f92041e3.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f7da1d86.css",
+    "static/js/main.956ec9c3.js"
+  ]
+}

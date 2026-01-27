@@ -1,6 +1,5 @@
 {
   "name": "kopano-vertex",
-  "homepage": "https://topnotch-solutions.github.io/kopano",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

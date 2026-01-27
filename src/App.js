@@ -308,13 +308,15 @@ function App() {
                 <h4>Petrus Haixula</h4>
                 <p className="role">CEO - Co Founder</p>
                 <p className="bio">
-                  Seasoned IT professional with over 8 years of experience and advanced 
+                  Seasoned IT professional with over 10 years of experience and advanced 
                   qualifications in technology, business, and blockchain innovation.
                 </p>
               </div>
               <div className="team-member">
-                <div className="member-avatar">WP</div>
-                <h4>Wilhelm Paulus</h4>
+                <div className="member-avatar">
+                  <img src={`${process.env.PUBLIC_URL}/paulus.png`} alt="Paulus Wilhelm" className="member-avatar-img" />
+                </div>
+                <h4>Paulus Wilhelm</h4>
                 <p className="role">Head of Technology and Innovation - Co Founder</p>
                 <p className="bio">
                   Strategic partner contributing to Kopano_Vertex Trading's vision of 

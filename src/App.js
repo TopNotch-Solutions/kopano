@@ -294,7 +294,7 @@ function App() {
           <div className="team-content">
             <div className="company-info">
               <h3>Kopano_Vertex Trading cc</h3>
-              <p className="location">📍 Windhoek, Namibia</p>
+              <p className="location"> Windhoek, Namibia</p>
               <p>
                 Led by experienced professionals with deep expertise in technology, business, 
                 and innovation, our team is dedicated to building solutions that make a difference.

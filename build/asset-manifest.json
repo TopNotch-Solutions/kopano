@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/kopano/static/css/main.f7da1d86.css",
-    "main.js": "/kopano/static/js/main.dcea73a5.js",
+    "main.js": "/kopano/static/js/main.fc8f00ca.js",
     "static/js/453.f92041e3.chunk.js": "/kopano/static/js/453.f92041e3.chunk.js",
     "index.html": "/kopano/index.html",
     "main.f7da1d86.css.map": "/kopano/static/css/main.f7da1d86.css.map",
-    "main.dcea73a5.js.map": "/kopano/static/js/main.dcea73a5.js.map",
+    "main.fc8f00ca.js.map": "/kopano/static/js/main.fc8f00ca.js.map",
     "453.f92041e3.chunk.js.map": "/kopano/static/js/453.f92041e3.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f7da1d86.css",
-    "static/js/main.dcea73a5.js"
+    "static/js/main.fc8f00ca.js"
   ]
 }

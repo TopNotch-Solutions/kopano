@@ -1,8 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 
 function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  useEffect(() => {
+    // Intersection Observer for scroll animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-in');
+        }
+      });
+    }, observerOptions);
+
+    // Observe all sections and cards
+    const elements = document.querySelectorAll('.fade-in, .slide-up, .scale-in');
+    elements.forEach(el => observer.observe(el));
+
+    return () => {
+      elements.forEach(el => observer.unobserve(el));
+    };
+  }, []);
 
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
@@ -107,12 +131,12 @@ function App() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="projects">
+      <section id="projects" className="projects fade-in">
         <div className="container">
           <h2 className="section-title">Our Projects</h2>
           
           {/* Health_Connect Project */}
-          <div className="project-card">
+          <div className="project-card slide-up">
             <div className="project-header">
               <div className="project-title-section">
                 <h3>Health_Connect</h3>
@@ -177,13 +201,13 @@ function App() {
           </section>
 
           {/* NAMIBride Project */}
-          <div className="project-card">
+          <div className="project-card slide-up">
             <div className="project-header">
               <div className="project-title-section">
                 <h3>NAMIBride</h3>
                 <div className="project-badges">
                   <span className="badge badge-industry">Transportation / Ride-Hailing</span>
-                  <span className="badge badge-active">Operating</span>
+                  <span className="badge badge-active">In Development (Launch Pending)</span>
                 </div>
               </div>
             </div>
@@ -195,7 +219,7 @@ function App() {
                 for safe transport and goods delivery across Namibia's growing towns.
               </p>
               <p>
-                The platform features AI-integrated safety verification (Gemini API) and 
+                The platform features AI-integrated safety verification and 
                 comprehensive fleet management portals. NAMIBride addresses the critical gap 
                 in the market for structured, digitally-enabled transport solutions, offering 
                 safe, reliable, and efficient services.
@@ -323,13 +347,24 @@ function App() {
                   technological innovation and local empowerment in Namibia.
                 </p>
               </div>
+              <div className="team-member">
+                <div className="member-avatar">
+                  <img src={`${process.env.PUBLIC_URL}/talo.png`} alt="Paulus Wilhelm" className="member-avatar-img" />
+                </div>
+                <h4>Taloshili Nghiwewelekwa</h4>
+                <p className="role">Senior Software Developer</p>
+                <p className="bio">
+                  Senior developer focused on transforming ideas into impactful digital solutions. Advocates for smart, future-ready systems that scale with business needs.
+                </p>
+              </div>
+              
             </div>
           </div>
         </div>
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="contact">
+      <section id="contact" className="contact fade-in">
         <div className="container">
           <h2 className="section-title">Get In Touch</h2>
           <div className="contact-content">
@@ -340,9 +375,33 @@ function App() {
                 questions about our services, we'd love to hear from you.
               </p>
               <div className="contact-details">
-                <p><strong>Company:</strong> Kopano_Vertex Trading cc</p>
-                <p><strong>Location:</strong> Windhoek, Namibia</p>
-                <p><strong>Email:</strong> support@kopanovertex.net</p>
+                <div className="contact-item">
+                  <div className="contact-text">
+                    <h4>Company</h4>
+                    <p>Kopano_Vertex Trading cc</p>
+                  </div>
+                </div>
+                <div className="contact-item">
+                  
+                  <div className="contact-text">
+                    <h4>Location</h4>
+                    <p>Windhoek, Namibia</p>
+                  </div>
+                </div>
+                <div className="contact-item">
+                  
+                  <div className="contact-text">
+                    <h4>Phone</h4>
+                    <p><a href="tel:+264818111703">+264 81 811 1703</a></p>
+                  </div>
+                </div>
+                <div className="contact-item">
+                
+                  <div className="contact-text">
+                    <h4>Email</h4>
+                    <p><a href="mailto:support@kopanovertex.net">support@kopanovertex.net</a></p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

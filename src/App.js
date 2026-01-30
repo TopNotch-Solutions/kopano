@@ -357,7 +357,15 @@ function App() {
                   Senior developer focused on transforming ideas into impactful digital solutions. Advocates for smart, future-ready systems that scale with business needs.
                 </p>
               </div>
-              
+              <div className="team-member">
+                <div className="member-avatar">
+                  <img src={`${process.env.PUBLIC_URL}/owen.png`} alt="Paulus Wilhelm" className="member-avatar-img" />
+                </div>
+                <h4>Chilwalo Owen Luyando</h4>
+                <p className="role">Senior Software Developer</p>
+                <p className="bio">
+                Strategic technology leader driving the design and delivery of intelligent, scalable digital platforms. Aligns AI-enabled solutions with business objectives to accelerate growth, efficiency, and innovation. </p>
+              </div>
             </div>
           </div>
         </div>

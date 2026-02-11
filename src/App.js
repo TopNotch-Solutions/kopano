@@ -42,7 +42,7 @@ function App() {
       <nav className="navbar">
         <div className="nav-container">
         <div className="logo">
-            <img src={`${process.env.PUBLIC_URL}/Kopano_Vertex__1_-removebg-preview.png`} alt="Kopano_Vertex Logo" className="logo-img" />
+            <img src={`${process.env.PUBLIC_URL}/Kopano-Vertex__1_-removebg-preview.png`} alt="Kopano-Vertex Logo" className="logo-img" />
           </div>
           <button className="menu-toggle" onClick={toggleSidebar} aria-label="Toggle menu">
             <span className={sidebarOpen ? 'hamburger open' : 'hamburger'}>
@@ -66,7 +66,7 @@ function App() {
       {/* Hero Section */}
       <section id="home" className="hero">
         <div className="hero-content">
-          <h1 className="hero-title">Kopano_Vertex Trading</h1>
+          <h1 className="hero-title">Kopano-Vertex Trading</h1>
           <p className="hero-subtitle">
             A Namibian technology company committed to innovation and local empowerment, 
             developing cutting-edge solutions that transform industries and improve lives.
@@ -91,11 +91,11 @@ function App() {
       {/* About Company Section */}
       <section id="about" className="about">
         <div className="container">
-          <h2 className="section-title">About Kopano_Vertex Trading</h2>
+          <h2 className="section-title">About Kopano-Vertex Trading</h2>
           <div className="about-content">
             <div className="about-text">
               <p className="lead">
-                Kopano_Vertex Trading cc is a Namibian-owned and operated technology company 
+                Kopano-Vertex Trading cc is a Namibian-owned and operated technology company 
                 headquartered in Windhoek, Namibia, dedicated to creating innovative digital 
                 solutions that address critical gaps in the market.
               </p>
@@ -317,7 +317,7 @@ function App() {
           <h2 className="section-title">Our Team</h2>
           <div className="team-content">
             <div className="company-info">
-              <h3>Kopano_Vertex Trading cc</h3>
+              <h3>Kopano-Vertex Trading cc</h3>
               <p className="location"> Windhoek, Namibia</p>
               <p>
                 Led by experienced professionals with deep expertise in technology, business, 
@@ -343,7 +343,7 @@ function App() {
                 <h4>Paulus Wilhelm</h4>
                 <p className="role">Head of Technology and Innovation - Co Founder</p>
                 <p className="bio">
-                  Strategic partner contributing to Kopano_Vertex Trading's vision of 
+                  Strategic partner contributing to Kopano-Vertex Trading's vision of 
                   technological innovation and local empowerment in Namibia.
                 </p>
               </div>
@@ -386,7 +386,7 @@ function App() {
                 <div className="contact-item">
                   <div className="contact-text">
                     <h4>Company</h4>
-                    <p>Kopano_Vertex Trading cc</p>
+                    <p>Kopano-Vertex Trading cc</p>
                   </div>
                 </div>
                 <div className="contact-item">
@@ -421,7 +421,7 @@ function App() {
         <div className="container">
           <div className="footer-content">
             <div className="footer-section">
-              <h3>Kopano_Vertex Trading</h3>
+              <h3>Kopano-Vertex Trading</h3>
               <p>Innovative technology solutions for Namibia</p>
             </div>
             <div className="footer-section">
@@ -441,7 +441,7 @@ function App() {
             </div>
           </div>
           <div className="footer-bottom">
-            <p>&copy; 2025 Kopano_Vertex Trading cc. All rights reserved.</p>
+            <p>&copy; 2025 Kopano-Vertex Trading cc. All rights reserved.</p>
           </div>
         </div>
       </footer>

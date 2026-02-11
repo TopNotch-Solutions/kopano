@@ -42,7 +42,7 @@ function App() {
       <nav className="navbar">
         <div className="nav-container">
         <div className="logo">
-            <img src={`${process.env.PUBLIC_URL}/Kopano-Vertex__1_-removebg-preview.png`} alt="Kopano-Vertex Logo" className="logo-img" />
+            <img src={`${process.env.PUBLIC_URL}/Kopano_Vertex__1_-removebg-preview.png`} alt="Kopano-Vertex Logo" className="logo-img" />
           </div>
           <button className="menu-toggle" onClick={toggleSidebar} aria-label="Toggle menu">
             <span className={sidebarOpen ? 'hamburger open' : 'hamburger'}>

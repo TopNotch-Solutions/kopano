@@ -56,6 +56,7 @@ function App() {
             <li><a href="#home" onClick={closeSidebar}>Home</a></li>
             <li><a href="#about" onClick={closeSidebar}>About</a></li>
             <li><a href="#projects" onClick={closeSidebar}>Projects</a></li>
+            <li><a href="#partners" onClick={closeSidebar}>Partners</a></li>
             <li><a href="#team" onClick={closeSidebar}>Team</a></li>
             <li><a href="#contact" onClick={closeSidebar}>Contact</a></li>
           </ul>
@@ -253,6 +254,27 @@ function App() {
           </div>
         </div>
       </section>
+      {/* Partners Section */}
+      <section id="partners" className="partners fade-in">
+        <div className="container">
+          <h2 className="section-title">Our Partners</h2>
+          <div className="partner-card slide-up">
+            <div className="partner-media">
+              <img src={`${process.env.PUBLIC_URL}/eme.png`} alt="MR Ambulance" className="partner-image" />
+            </div>
+            <div className="partner-info">
+              <h3>MR Ambulance</h3>
+              <p className="lead">Reliable 24/7 Emergency Ambulance Services</p>
+              <p>
+                MR provides round-the-clock emergency response and patient transport across Namibia. With trained medical personnel, rapid dispatch systems, and a focus on safe, compassionate care, MR ensures timely support when every minute counts.
+              </p>
+              <p>
+                Partnering with MR strengthens our Health_Connect offering by combining digital triage and on-demand medical transport — delivering integrated care from app to ambulance.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Videos Section - NAMIBride */}
       <section id="videos" className="videos">
@@ -430,6 +452,7 @@ function App() {
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#projects">Projects</a></li>
+                <li><a href="#partners">Partners</a></li>
                 <li><a href="#team">Team</a></li>
               </ul>
             </div>

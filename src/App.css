@@ -1047,6 +1047,55 @@ section {
   border-left: 4px solid #0066cc;
 }
 
+/* Partners Section */
+.partners {
+  background: linear-gradient(135deg, #ffffff 0%, #f7fbfa 100%);
+}
+
+.partner-card {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 2rem;
+  align-items: center;
+  background: white;
+  padding: 1.75rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+  border: 1px solid #eef3f6;
+}
+
+.partner-image {
+  width: 100%;
+  height: 160px;
+  object-fit: contain;
+  border-radius: 10px;
+  background: #fafafa;
+  padding: 8px;
+}
+
+.partner-info h3 {
+  font-size: 1.4rem;
+  color: #0066cc;
+  margin-bottom: 0.25rem;
+}
+
+.partner-info .lead {
+  color: #00a86b;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .partner-card {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .partner-image {
+    height: 220px;
+    margin: 0 auto;
+  }
+}
+
 .future-item:hover {
   transform: translateX(5px);
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);

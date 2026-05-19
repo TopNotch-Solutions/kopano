@@ -174,7 +174,7 @@ function App() {
 
         <section className="section section-muted page-wrap reveal">
           <h2 className="section-title-center font-headline-lg">Health_Connect in Action</h2>
-          <MediaGrid files={['h1.png', 'h2.png', 'h3.png', 'h4.png']} />
+          <MediaGrid files={['h2.png', 'h6.png', 'h5.png', 'h1.png']} />
         </section>
 
         <section className="section section-muted page-wrap reveal">

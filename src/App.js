@@ -87,7 +87,7 @@ function App() {
 
       <main className="main-content">
         <section id="home" className="hero-banner">
-          <img className="hero-banner-img" src={`${publicUrl}/h1.JPG`} alt="Healthcare technology" />
+          <img className="hero-banner-img" src={`${publicUrl}/h1.png`} alt="Healthcare technology" />
           <div className="hero-banner-inner page-wrap">
             <p className="hero-eyebrow font-label-md">
               <span className="hero-eyebrow-line" />
@@ -174,7 +174,7 @@ function App() {
 
         <section className="section section-muted page-wrap reveal">
           <h2 className="section-title-center font-headline-lg">Health_Connect in Action</h2>
-          <MediaGrid files={['h1.JPG', 'h2.JPG', 'h3.PNG', 'h4.PNG']} />
+          <MediaGrid files={['h1.png', 'h2.png', 'h3.png', 'h4.png']} />
         </section>
 
         <section className="section section-muted page-wrap reveal">

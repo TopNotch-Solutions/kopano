@@ -13,6 +13,7 @@ const TEAM = [
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [projectsOpen, setProjectsOpen] = useState(false);
+  const isPrivacyRoute = typeof window !== 'undefined' && window.location.pathname === '/privacy';
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -31,6 +32,10 @@ function App() {
     setMenuOpen(false);
     setProjectsOpen(false);
   };
+
+  if (isPrivacyRoute) {
+    return <PrivacyPage />;
+  }
 
   return (
     <div className="App">
@@ -492,6 +497,79 @@ function SiteFooter() {
         </div>
       </div>
     </footer>
+  );
+}
+
+function PrivacyPage() {
+  return (
+    <div className="App privacy-page">
+      <header className="top-bar">
+        <div className="top-bar-inner">
+          <a href="/" className="brand">
+            <img src={`${publicUrl}/Kopano_Vertex__1_-removebg-preview.png`} alt="" className="brand-logo" />
+            <span className="brand-name font-headline-md">Kopano-Vertex</span>
+          </a>
+        </div>
+      </header>
+
+      <main className="main-content page-wrap">
+        <section className="section privacy-content">
+          <div className="section-heading-row">
+            <span className="section-accent-bar" />
+            <h1 className="font-display-lg">Health_Connect Privacy Policy</h1>
+          </div>
+          <p className="font-body-md muted">
+            This Privacy Policy explains how Kopano-Vertex Trading cc (&quot;Kopano-Vertex&quot;, &quot;we&quot;, &quot;us&quot; or
+            &quot;our&quot;) collects, uses, stores and protects personal information when you use the Health_Connect
+            platform. This policy applies specifically to Health_Connect and related digital services.
+          </p>
+
+          <h2 className="font-headline-lg">1. Information We Collect</h2>
+          <ul className="font-body-md muted">
+            <li>Identification information such as your name, contact details and demographic data.</li>
+            <li>Health-related information that you voluntarily provide to healthcare professionals via Health_Connect.</li>
+            <li>Technical information such as device identifiers, approximate location (if enabled) and usage logs.</li>
+          </ul>
+
+          <h2 className="font-headline-lg">2. How We Use Your Information</h2>
+          <ul className="font-body-md muted">
+            <li>To provide and maintain telemedicine consultations and related Health_Connect services.</li>
+            <li>To improve service quality, security, and reliability of the Health_Connect platform.</li>
+            <li>To comply with applicable legal, regulatory and clinical record-keeping obligations.</li>
+          </ul>
+
+          <h2 className="font-headline-lg">3. Data Sharing and Storage</h2>
+          <ul className="font-body-md muted">
+            <li>Your health information is shared only with authorised healthcare professionals and trusted partners where necessary for care delivery.</li>
+            <li>Data is stored using secure, access-controlled systems with regional data sovereignty as a design priority.</li>
+            <li>We do not sell your personal or health information to third parties.</li>
+          </ul>
+
+          <h2 className="font-headline-lg">4. Your Rights</h2>
+          <ul className="font-body-md muted">
+            <li>You may request access to your personal information held within Health_Connect.</li>
+            <li>You may request correction of inaccurate personal information.</li>
+            <li>You may contact us to inquire about data retention, security or consent withdrawal where applicable.</li>
+          </ul>
+
+          <h2 className="font-headline-lg">5. Contact</h2>
+          <p className="font-body-md muted">
+            For questions about this Privacy Policy or how your data is handled in Health_Connect, please contact:
+          </p>
+          <ul className="font-body-md muted">
+            <li>Kopano-Vertex Trading cc, Windhoek, Namibia</li>
+            <li>Phone: <a href="tel:+264818111703">+264 81 811 1703</a></li>
+            <li>Email: <a href="mailto:support@kopanovertex.net">support@kopanovertex.net</a></li>
+          </ul>
+
+          <p className="font-body-sm muted">
+            Last updated: 2026. This page is provided for informational purposes during the Health_Connect development phase.
+          </p>
+        </section>
+      </main>
+
+      <SiteFooter />
+    </div>
   );
 }
 

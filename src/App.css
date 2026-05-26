@@ -1023,6 +1023,47 @@ html {
   color: var(--color-secondary);
 }
 
+/* Privacy */
+.privacy-page {
+  min-height: 100vh;
+}
+
+.privacy-content {
+  max-width: 56rem;
+  margin: 0 auto;
+}
+
+.privacy-content h1,
+.privacy-content h2 {
+  color: var(--color-namibian-navy);
+}
+
+.privacy-content h2 {
+  margin-top: var(--space-lg);
+  margin-bottom: var(--space-sm);
+}
+
+.privacy-content p,
+.privacy-content li {
+  line-height: 1.75;
+}
+
+.privacy-content ul {
+  display: grid;
+  gap: var(--space-xs);
+  padding-left: 1.5rem;
+}
+
+.privacy-content a {
+  color: var(--color-namibian-navy);
+  font-weight: 700;
+  text-decoration-color: var(--color-electric-cyan);
+}
+
+.privacy-content a:hover {
+  color: var(--color-secondary);
+}
+
 /* Footer */
 .site-footer {
   background: var(--color-namibian-navy);

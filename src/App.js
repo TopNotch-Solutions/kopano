@@ -13,7 +13,9 @@ const TEAM = [
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [projectsOpen, setProjectsOpen] = useState(false);
-  const isPrivacyRoute = typeof window !== 'undefined' && window.location.pathname === '/privacy';
+  const pathname = typeof window !== 'undefined' ? window.location.pathname : '';
+  const isPrivacyRoute = pathname === '/privacy';
+  const isPoliciesRoute = pathname === '/policies';
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -35,6 +37,10 @@ function App() {
 
   if (isPrivacyRoute) {
     return <PrivacyPage />;
+  }
+
+  if (isPoliciesRoute) {
+    return <PoliciesPage />;
   }
 
   return (
@@ -500,17 +506,220 @@ function SiteFooter() {
   );
 }
 
+function LegalPageHeader() {
+  return (
+    <header className="top-bar">
+      <div className="top-bar-inner">
+        <a href="/" className="brand">
+          <img src={`${publicUrl}/Kopano_Vertex__1_-removebg-preview.png`} alt="" className="brand-logo" />
+          <span className="brand-name font-headline-md">Kopano-Vertex</span>
+        </a>
+      </div>
+    </header>
+  );
+}
+
+function PoliciesPage() {
+  return (
+    <div className="App privacy-page">
+      <LegalPageHeader />
+
+      <main className="main-content page-wrap">
+        <section className="section privacy-content">
+          <div className="section-heading-row">
+            <span className="section-accent-bar" />
+            <h1 className="font-display-lg">Privacy Policy</h1>
+          </div>
+          <p className="font-body-sm muted">
+            Last Updated: July 27, 2026<br />
+            Effective Date: July 27, 2026
+          </p>
+          <p className="font-body-md muted">
+            Welcome to Health_Connect (&quot;we,&quot; &quot;us,&quot; or &quot;our&quot;). Health_Connect is a digital healthcare
+            coordination platform designed to facilitate non-emergency medical interactions, video/in-person
+            telemedicine scheduling, practitioner-patient connections, and prescription dispensing coordination
+            between verified healthcare practitioners, registered community/hospital pharmacies, and users. All
+            participating healthcare providers and pharmaceutical practices operate under the regulatory framework
+            of the Health Professions Council of Namibia (HPCNA) and the Pharmacy Council of Namibia.
+          </p>
+          <p className="font-body-md muted">
+            We are committed to maintaining maximum transparency regarding user account management, regulatory
+            compliance, and data privacy. This policy outlines how our iOS application operates in compliance with
+            Apple App Store Review Guidelines (Section 5.1 &amp; 1.4) and Namibian healthcare regulations.
+          </p>
+
+          <h2 className="font-headline-lg">1. Important Notice: Non-Emergency Services &amp; Emergency Protocols</h2>
+          <p className="font-body-md muted policy-notice">
+            Health_Connect IS DESIGNED FOR NON-EMERGENCY HEALTHCARE COORDINATION, TELEMEDICINE, AND PHARMACEUTICAL
+            DISPENSING.
+          </p>
+          <p className="font-body-md muted">
+            The platform is NOT a standalone automated emergency dispatch system or diagnostic tool. For critical or
+            life-threatening emergencies, primary reliance must be placed on local emergency medical responders.
+          </p>
+          <p className="font-body-md muted">
+            <strong>Sustained Practitioner Support En Route (MR 24/7)</strong><br />
+            In critical emergency situations requiring immediate transport, users or their companions may utilize
+            Health_Connect to stay connected with or sustained by a matched practitioner while en route to an
+            emergency medical facility via MR 24/7 Ambulance Services.
+          </p>
+          <ul className="font-body-md muted">
+            <li>
+              <strong>MR 24/7 Emergency Medical Services:</strong>
+              <ul>
+                <li>Hotline / Short Code: 956 or 085 956</li>
+                <li>24/7 Control Room: +264 61 255 676 or +264 81 872 2233</li>
+              </ul>
+            </li>
+            <li>Namibian Police / National Emergency Line: 10111 or 112</li>
+            <li>MVA Fund Accident Response: 9682</li>
+          </ul>
+
+          <h2 className="font-headline-lg">2. Data Minimization, Administrative Tracking &amp; Health Records</h2>
+          <p className="font-body-md muted">
+            We uphold a strict policy of Data Minimization regarding clinical content, balanced with necessary
+            administrative audit logging:
+          </p>
+          <ul className="font-body-md muted">
+            <li>
+              <strong>Zero Patient Clinical Records Stored In-App:</strong> Health_Connect does NOT collect, process,
+              or store patient clinical notes, diagnostic medical histories, or consultation findings on the app or
+              cloud servers. Healthcare practitioners are required to record all clinical findings and triage notes on
+              the patient&apos;s physical health cards.
+            </li>
+            <li>
+              <strong>Administrative Attendance &amp; Dispensing Logs:</strong> For service tracking, safety verification,
+              and operational accountability, the platform maintains administrative record logs of interaction events:
+              <ul>
+                <li>
+                  <strong>Practitioner Attendance Records:</strong> Tracking which verified HPCNA practitioner attended
+                  to a specific patient, along with consultation timestamps and service delivery modes (in-person or
+                  embedded video).
+                </li>
+                <li>
+                  <strong>Pharmacy Dispensing Logs:</strong> Tracking which registered pharmacy and responsible pharmacist
+                  processed and dispensed specific medication orders to a patient.
+                </li>
+              </ul>
+            </li>
+            <li>
+              <strong>Embedded Telemedicine Services:</strong> Non-emergency video telemedicine interactions take place via
+              secure, real-time transmissions and are never recorded or stored on our servers.
+            </li>
+          </ul>
+
+          <h2 className="font-headline-lg">3. Accreditation, Automated Deactivation &amp; Account Control</h2>
+          <p className="font-body-md muted">
+            To ensure absolute safety, trust, and regulatory compliance across the platform, Health_Connect enforces
+            strict identity, licensing, and accreditation controls for all platform entities (patients, healthcare
+            practitioners, responsible pharmacists, and pharmacy establishments).
+          </p>
+
+          <h3 className="font-headline-md">A. Qualification &amp; Institutional Requirements</h3>
+          <ul className="font-body-md muted">
+            <li>
+              <strong>Practitioners &amp; Pharmacists:</strong> Must provide valid proof of identity, professional
+              qualifications, specialty certifications, and active registration with the Pharmacy Council of Namibia /
+              HPCNA.
+            </li>
+            <li>
+              <strong>Pharmacies:</strong> Must be legally licensed pharmaceutical practices operated under a verified
+              Responsible Pharmacist in compliance with Namibian statutory regulations.
+            </li>
+          </ul>
+
+          <h3 className="font-headline-md">B. License Validity &amp; Automatic Account Deactivation</h3>
+          <ul className="font-body-md muted">
+            <li>
+              <strong>License Expiration:</strong> Practitioner and pharmacy accounts are tied strictly to the validity
+              period of their HPCNA / Pharmacy Council licensing. Upon expiration of an official license or practice
+              registration, the associated account is automatically deactivated, blocking further consultation and
+              medication dispensing services on the platform.
+            </li>
+            <li>
+              <strong>Automatic Change Locks (All Users, Pharmacies &amp; Profile Pictures):</strong> To prevent fraud,
+              false representation, or unverified updates, any edit or upload made to an account including changes to
+              legal names, pharmacy trading details, licensing documents, or live profile images (applicable to
+              practitioners, pharmacists, patients, and pharmacy listings) will trigger an automatic account
+              deactivation.
+            </li>
+            <li>
+              <strong>Super Admin Verification Required:</strong> Once an account is locked or deactivated due to profile
+              edits, media uploads, or license renewals, it requires manual inspection and verification by a Super Admin.
+              The account will only be reactivated once the Super Admin confirms the authenticity and accuracy of the
+              submitted credentials.
+            </li>
+          </ul>
+
+          <h2 className="font-headline-lg">4. Information We Process and Usage Restrictions</h2>
+
+          <h3 className="font-headline-md">A. Account Identification &amp; Operational Data</h3>
+          <p className="font-body-md muted">
+            We process minimal profile details (full name, verified contact numbers, operating locations, live profile
+            photos, and administrative interaction/dispensing logs) solely for account verification, safety, pharmacy
+            fulfillment tracking, and identity validation between patients, practitioners, and pharmacies.
+          </p>
+
+          <h3 className="font-headline-md">B. Strict Data Use Restrictions (Apple Guidelines Compliance)</h3>
+          <ul className="font-body-md muted">
+            <li>
+              User, attendance, or pharmaceutical order data processed via Health_Connect will NEVER be sold, leased,
+              or rented to third-party brokers.
+            </li>
+            <li>
+              Account, identity, and interaction history logs are NEVER used for advertising, behavioral tracking, or
+              non-healthcare marketing profiles.
+            </li>
+          </ul>
+
+          <h2 className="font-headline-lg">5. In-App Account Deletion &amp; Audit Retention (Apple Compliant)</h2>
+          <p className="font-body-md muted">
+            In accordance with Apple Developer Guidelines (Section 5.1.1), users may initiate account deletion directly
+            within the iOS App. However, due to healthcare governance and legal tracking requirements, account deletion
+            operates under specific data retention policies:
+          </p>
+
+          <h3 className="font-headline-md">Deletion Process &amp; Data Status</h3>
+          <ol className="font-body-md muted">
+            <li>
+              <strong>User Initiation:</strong> Users initiate account deletion via Settings / Profile &gt; Delete Account
+              in the Health_Connect iOS App.
+            </li>
+            <li>
+              <strong>User Access Revocation:</strong> Upon deletion confirmation, the account is immediately deactivated
+              and rendered completely inaccessible to the patient or user.
+            </li>
+            <li>
+              <strong>Super Admin Retention for Legal Audit:</strong> In compliance with statutory healthcare log
+              retention obligations, administrative tracking logs (who attended to whom, dispensing records, and
+              transaction logs) are retained in a secure, archived state. These archived records are strictly
+              inaccessible to standard users and are only accessible by a Super Admin in the event of an official
+              medical dispute, legal request, or data audit.
+            </li>
+          </ol>
+
+          <h2 className="font-headline-lg">6. Contact and Regulatory Inquiries</h2>
+          <p className="font-body-md muted">
+            For questions regarding verification protocols, pharmacy onboarding, account reactivation requests, or
+            privacy practices:
+          </p>
+          <ul className="font-body-md muted">
+            <li>Platform Developer / Legal Entity: Kopano_Vertex Trading CC</li>
+            <li>Email: <a href="mailto:support@healthconnect.com.na">support@healthconnect.com.na</a></li>
+            <li>Location: Windhoek, Namibia</li>
+          </ul>
+        </section>
+      </main>
+
+      <SiteFooter />
+    </div>
+  );
+}
+
 function PrivacyPage() {
   return (
     <div className="App privacy-page">
-      <header className="top-bar">
-        <div className="top-bar-inner">
-          <a href="/" className="brand">
-            <img src={`${publicUrl}/Kopano_Vertex__1_-removebg-preview.png`} alt="" className="brand-logo" />
-            <span className="brand-name font-headline-md">Kopano-Vertex</span>
-          </a>
-        </div>
-      </header>
+      <LegalPageHeader />
 
       <main className="main-content page-wrap">
         <section className="section privacy-content">

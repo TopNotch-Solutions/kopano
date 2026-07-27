@@ -1034,7 +1034,8 @@ html {
 }
 
 .privacy-content h1,
-.privacy-content h2 {
+.privacy-content h2,
+.privacy-content h3 {
   color: var(--color-namibian-navy);
 }
 
@@ -1043,15 +1044,30 @@ html {
   margin-bottom: var(--space-sm);
 }
 
+.privacy-content h3 {
+  margin-top: var(--space-md);
+  margin-bottom: var(--space-xs);
+}
+
 .privacy-content p,
 .privacy-content li {
   line-height: 1.75;
 }
 
-.privacy-content ul {
+.privacy-content ul,
+.privacy-content ol {
   display: grid;
   gap: var(--space-xs);
   padding-left: 1.5rem;
+}
+
+.privacy-content ul ul {
+  margin-top: var(--space-xs);
+}
+
+.privacy-content .policy-notice {
+  font-weight: 700;
+  color: var(--color-namibian-navy);
 }
 
 .privacy-content a {

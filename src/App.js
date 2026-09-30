@@ -8,6 +8,8 @@ const TEAM = [
   { img: 'paulus.png', name: 'Paulus Wilhelm', role: 'Head of Technology — Co Founder', bio: 'Driving technological innovation and local empowerment across Namibia.' },
   { img: 'talo.png', name: 'Taloshili Nghiwewelekwa', role: 'Senior Software Developer', bio: 'Transforming ideas into impactful digital solutions with future-ready systems.' },
   { img: 'owen.png', name: 'Chilwalo Owen Luyando', role: 'Senior Software Developer', bio: 'Designing intelligent, scalable platforms aligned with business objectives.' },
+  { img: 'saimah.png', name: 'Saima Haitembu', role: 'Business Analyst & UI/UX Designer', bio: 'Dual-role specializing in end-to-end product delivery from requirements gathering, process modeling, and wireframing to high-fidelity prototyping and design execution.' },
+  { img: 'kondjee.png', name: 'Kondjee Kamutindi', role: 'Software Developer - Intern', bio: 'CS student dedicated to turning ideas into reliable, user-focused digital solutions.' },
 ];
 
 function App() {
@@ -185,7 +187,7 @@ function App() {
 
         <section className="section section-muted page-wrap reveal">
           <h2 className="section-title-center font-headline-lg">Health_Connect in Action</h2>
-          <MediaGrid files={['h2.png', 'h6.png', 'h5.png', 'h1.png']} />
+          <MediaGrid files={['h1.jpg', 'h2.jpg', 'h3.jpg', 'h4.jpg']} />
         </section>
 
         <section className="section section-muted page-wrap reveal">
@@ -449,10 +451,10 @@ function VideoGrid() {
 
 function ContactGrid() {
   const items = [
-    { label: 'Company', value: 'Kopano-Vertex Trading cc' },
+    { label: 'Company', value: 'Kopano-Vertex Trading CC' },
     { label: 'Location', value: 'Windhoek, Namibia' },
     { label: 'Phone', value: <a href="tel:+264818111703">+264 81 811 1703</a> },
-    { label: 'Email', value: <a href="mailto:support@kopanovertex.net">support@kopanovertex.net</a> },
+    { label: 'Email', value: <a href="mailto:support@kopanovertex.net">support@kopanovertex.org</a> },
   ];
   return (
     <div className="contact-grid">
@@ -499,7 +501,9 @@ function SiteFooter() {
           </div>
         </div>
         <div className="footer-bottom">
-          <span className="font-label-sm muted">&copy; 2025 Kopano-Vertex Trading cc. All rights reserved.</span>
+          <span className="font-label-sm muted">
+  &copy; {new Date().getFullYear()} Kopano-Vertex Trading CC. All rights reserved.
+</span>
         </div>
       </div>
     </footer>

@@ -417,7 +417,7 @@ function App() {
                     Whether you&apos;re interested in our projects, partnerships, or services — we&apos;d love to hear from you.
                   </p>
                 </div>
-                <a href="mailto:support@kopanovertex.net" className="btn btn--primary">Email Us</a>
+                <a href="mailto:support@kopanovertex.org" className="btn btn--primary">Email Us</a>
               </div>
               <ContactList />
             </div>

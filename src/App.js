@@ -132,7 +132,7 @@ function App() {
         <section id="home" className="hero">
           <div
             className="hero__bg"
-            style={{ backgroundImage: `url(${publicUrl}/Designerr.png)` }}
+            style={{ backgroundImage: `url(${publicUrl}/Designern.png)` }}
             aria-hidden="true"
           />
           <div className="hero__overlay" aria-hidden="true" />

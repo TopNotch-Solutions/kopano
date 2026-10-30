@@ -4,12 +4,12 @@ import './App.css';
 const publicUrl = process.env.PUBLIC_URL;
 
 const TEAM = [
-  { img: '48633-removebg-preview.png', name: 'Petrus Haixula', role: 'CEO — Co Founder', bio: 'Seasoned IT professional with over 10 years of experience in technology, business, and blockchain innovation.' },
-  { img: 'paulus.png', name: 'Paulus Wilhelm', role: 'Head of Technology — Co Founder', bio: 'Driving technological innovation and local empowerment across Namibia.' },
-  { img: 'talo.png', name: 'Taloshili Nghiwewelekwa', role: 'Senior Software Developer', bio: 'Transforming ideas into impactful digital solutions with future-ready systems.' },
-  { img: 'owen.png', name: 'Chilwalo Owen Luyando', role: 'Senior Software Developer', bio: 'Designing intelligent, scalable platforms aligned with business objectives.' },
-  { img: 'saimah.png', name: 'Saima Haitembu', role: 'Business Analyst & UI/UX Designer', bio: 'Dual-role specializing in end-to-end product delivery from requirements gathering, process modeling, and wireframing to high-fidelity prototyping and design execution.' },
-  { img: 'kondjee.png', name: 'Kondjee Kamutindi', role: 'Software Developer - Intern', bio: 'CS student dedicated to turning ideas into reliable, user-focused digital solutions.' },
+  { img: 'team/petrus.png', name: 'Petrus Haixula', role: 'CEO — Co Founder', bio: 'Seasoned IT professional with over 10 years of experience in technology, business, and blockchain innovation.' },
+  // { img: 'team/paulus.png', name: 'Paulus Wilhelm', role: 'Head of Technology — Co Founder', bio: 'Driving technological innovation and local empowerment across Namibia.' },
+  { img: 'team/talo.png', name: 'Taloshili Nghiwewelekwa', role: 'Senior Software Developer', bio: 'Transforming ideas into impactful digital solutions with future-ready systems.' },
+  { img: 'team/owen.png', name: 'Chilwalo Owen Luyando', role: 'Senior Software Developer', bio: 'Designing intelligent, scalable platforms aligned with business objectives.' },
+  { img: 'team/saimah.png', name: 'Saima Haitembu', role: 'Business Analyst & UI/UX Designer', bio: 'Dual-role specializing in end-to-end product delivery from requirements gathering, process modeling, and wireframing to high-fidelity prototyping and design execution.' },
+  { img: 'team/kondjee.png', name: 'Kondjee Kamutindi', role: 'Software Developer - Intern', bio: 'CS student dedicated to turning ideas into reliable, user-focused digital solutions.' },
   { img: 'shikongo.png', name: 'Jeremiah Shikongo', role: 'System Administrator', bio: 'Maintaining secure, reliable infrastructure and keeping our platforms running smoothly.' },
 ];
 
@@ -72,12 +72,8 @@ function App() {
       <header className={`navbar ${navSolid || menuOpen ? 'navbar--solid' : ''}`}>
         <div className="navbar__inner container">
           <a href="#home" className="brand" onClick={closeMenu}>
-            <img
-              src={`${publicUrl}/Kopano_Vertex__1_-removebg-preview.png`}
-              alt=""
-              className="brand__mark"
-            />
-            Kopano-Vertex Trading
+            <span className="brand__mark" aria-hidden="true" />
+            <span>Kopano-Vertex</span>
           </a>
 
           <button
@@ -136,15 +132,21 @@ function App() {
         <section id="home" className="hero">
           <div
             className="hero__bg"
-            style={{ backgroundImage: `url(${publicUrl}/h1.png)` }}
+            style={{ backgroundImage: `url(${publicUrl}/Designerr.png)` }}
             aria-hidden="true"
           />
           <div className="hero__overlay" aria-hidden="true" />
           <div className="hero__grid container">
             <div className="hero__copy">
-              <p className="eyebrow">
-                <span className="eyebrow__bar" />
-                Digital Sovereignty
+              <p className="hero-badge">
+                <span className="hero-badge__icon" aria-hidden="true">
+                  <span className="material-symbols-outlined">verified_user</span>
+                </span>
+                <span className="hero-badge__text">Digital Sovereignty</span>
+                <span className="hero-badge__meta">
+                  <span className="material-symbols-outlined">location_on</span>
+                  Windhoek, Namibia
+                </span>
               </p>
               <h1 className="hero__title">Kopano-Vertex Trading</h1>
               <p className="hero__text">
@@ -152,7 +154,10 @@ function App() {
                 developing cutting-edge solutions that transform industries and improve lives.
               </p>
               <div className="hero__actions">
-                <a href="#health-connect" className="btn btn--accent">Our Projects</a>
+                <a href="#health-connect" className="btn btn--accent">
+                  Our Projects
+                  <span className="material-symbols-outlined" style={{ fontSize: 18 }}>arrow_forward</span>
+                </a>
                 <a href="#contact" className="btn btn--ghost-light">Contact Us</a>
               </div>
             </div>
@@ -211,10 +216,19 @@ function App() {
           </div>
         </section>
 
-        <section id="health-connect" className="section section--tint">
+        <section id="health-connect" className="section section--tint section--project">
+          <span className="project-watermark" aria-hidden="true">01</span>
           <div className="container">
             <div className="section-header reveal">
-              <p className="eyebrow"><span className="eyebrow__bar" />Project 01</p>
+              <div className="project-marker">
+                <span className="project-marker__num">
+                  01<span className="project-marker__total">/02</span>
+                </span>
+                <span className="project-marker__label">
+                  <span className="project-marker__kicker">Project</span>
+                  Telemedicine
+                </span>
+              </div>
               <h2 className="section-header__title">Health Connect Namibia</h2>
               <p className="section-header__subtitle">Decentralizing Care Across Namibia</p>
             </div>
@@ -297,16 +311,24 @@ function App() {
           </div>
         </section>
 
-        <section id="namibride" className="section section--tint">
+        <section id="namibride" className="section section--tint section--project">
+          <span className="project-watermark" aria-hidden="true">02</span>
           <div className="container">
             <div className="section-header reveal">
-              <p className="eyebrow"><span className="eyebrow__bar" />Project 02</p>
+              <div className="project-marker">
+                <span className="project-marker__num">
+                  02<span className="project-marker__total">/02</span>
+                </span>
+                <span className="project-marker__label">
+                  <span className="project-marker__kicker">Project</span>
+                  Mobility &amp; Logistics
+                </span>
+              </div>
               <h2 className="section-header__title">NAMIBride</h2>
               <p className="section-header__subtitle">Formalizing Transport Across Namibia</p>
             </div>
             <div className="split">
               <div className="reveal">
-                <h3 className="subheading">Business Summary</h3>
                 <div className="prose">
                   <p>
                     NAMIBride is a ride-hailing and logistics platform designed to formalize the public
@@ -315,19 +337,23 @@ function App() {
                   </p>
                 </div>
                 <div className="feature-grid feature-grid--2">
-                  <div className="feature">
+                  <div className="feature feature--icon">
+                    <span className="feature__icon material-symbols-outlined">directions_car</span>
                     <h4>Ride-Hailing</h4>
                     <p>Verified drivers for safe, reliable transport</p>
                   </div>
-                  <div className="feature">
+                  <div className="feature feature--icon">
+                    <span className="feature__icon material-symbols-outlined">local_shipping</span>
                     <h4>Fleet Management</h4>
                     <p>Comprehensive portals for business owners</p>
                   </div>
-                  <div className="feature">
+                  <div className="feature feature--icon">
+                    <span className="feature__icon material-symbols-outlined">shield</span>
                     <h4>Safety Features</h4>
                     <p>AI verification, panic buttons, trip histories</p>
                   </div>
-                  <div className="feature">
+                  <div className="feature feature--icon">
+                    <span className="feature__icon material-symbols-outlined">package_2</span>
                     <h4>Goods Delivery</h4>
                     <p>Efficient delivery for businesses and individuals</p>
                   </div>
@@ -339,6 +365,7 @@ function App() {
               </div>
               <aside className="reveal">
                 <div className="spec-card spec-card--markets">
+                  <span className="spec-card__icon material-symbols-outlined" aria-hidden="true">map</span>
                   <h3 className="spec-card__title">Target Markets</h3>
                   <p>
                     Urban populations in Walvis Bay, Swakopmund, Oshakati, Ongwediva, Ondangwa, and
@@ -370,12 +397,13 @@ function App() {
               {TEAM.map((m) => (
                 <li key={m.name}>
                   <article className="member">
-                    <div className="member__photo">
-                      <img src={`${publicUrl}/${m.img}`} alt={m.name} />
+                    <div className="member__stage">
+                      <span className="member__frame" aria-hidden="true" />
+                      <img src={`${publicUrl}/${m.img}`} alt={m.name} loading="lazy" />
                     </div>
                     <div className="member__body">
-                      <h3>{m.name}</h3>
-                      <span className="member__role">{m.role}</span>
+                      <h3 className="member__name">{m.name}</h3>
+                      <p className="member__role">{m.role}</p>
                       <p className="member__bio">{m.bio}</p>
                     </div>
                   </article>
@@ -395,7 +423,7 @@ function App() {
               </p>
               <div className="cta-band__actions">
                 <a
-                  href="mailto:support@kopanovertex.net?subject=Partnership%20Inquiry"
+                  href="mailto:support@kopanovertex.org?subject=Partnership%20Inquiry"
                   className="btn btn--accent"
                 >
                   Inquire for Partnership
@@ -426,6 +454,19 @@ function App() {
       </main>
 
       <SiteFooter />
+
+      <a
+        href="https://wa.me/264814302536"
+        className="whatsapp-fab"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Chat with us on WhatsApp"
+      >
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor" aria-hidden="true">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+        </svg>
+        <span className="whatsapp-fab__label">Chat with us</span>
+      </a>
     </div>
   );
 }
@@ -519,7 +560,8 @@ function ContactList() {
     { icon: 'apartment', label: 'Company', value: 'Kopano-Vertex Trading CC' },
     { icon: 'location_on', label: 'Location', value: 'Windhoek, Namibia' },
     { icon: 'call', label: 'Phone', value: <a href="tel:+264818111703" className="contact-item__value">+264 81 811 1703</a> },
-    { icon: 'mail', label: 'Email', value: <a href="mailto:support@kopanovertex.net" className="contact-item__value">support@kopanovertex.net</a> },
+    { icon: 'chat', label: 'WhatsApp', value: <a href="https://wa.me/264814302536" className="contact-item__value" target="_blank" rel="noopener noreferrer">+264 81 430 2536</a> },
+    { icon: 'mail', label: 'Email', value: <a href="mailto:support@kopanovertex.org" className="contact-item__value">support@kopanovertex.org</a> },
   ];
   return (
     <ul className="contact-list reveal reveal--stagger">
@@ -576,8 +618,11 @@ function SiteFooter() {
               <a href="/" aria-label="Website">
                 <span className="material-symbols-outlined">public</span>
               </a>
-              <a href="mailto:support@kopanovertex.net" aria-label="Email">
+              <a href="mailto:support@kopanovertex.org" aria-label="Email">
                 <span className="material-symbols-outlined">mail</span>
+              </a>
+              <a href="https://wa.me/264814302536" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                <span className="material-symbols-outlined">chat</span>
               </a>
             </div>
           </div>
@@ -595,12 +640,8 @@ function LegalPageHeader() {
     <header className="navbar navbar--solid navbar--legal">
       <div className="navbar__inner container">
         <a href="/" className="brand">
-          <img
-            src={`${publicUrl}/Kopano_Vertex__1_-removebg-preview.png`}
-            alt=""
-            className="brand__mark"
-          />
-          Kopano-Vertex Trading
+          <span className="brand__mark" aria-hidden="true" />
+          <span>Kopano-Vertex</span>
         </a>
       </div>
     </header>
@@ -850,7 +891,7 @@ function PrivacyPage() {
             <ul>
               <li>Kopano-Vertex Trading cc, Windhoek, Namibia</li>
               <li>Phone: <a href="tel:+264818111703">+264 81 811 1703</a></li>
-              <li>Email: <a href="mailto:support@kopanovertex.org">support@kopanovertex.net</a></li>
+              <li>Email: <a href="mailto:support@kopanovertex.org">support@kopanovertex.org</a></li>
             </ul>
 
             <p className="legal__meta" style={{ marginTop: 24 }}>

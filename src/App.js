@@ -13,6 +13,64 @@ const TEAM = [
   { img: 'shikongo.png', name: 'Jeremiah Shikongo', role: 'System Administrator', bio: 'Maintaining secure, reliable infrastructure and keeping our platforms running smoothly.' },
 ];
 
+const IAAS_MARKUP = 1.15;
+
+const LINUX_DISTROS = [
+  'Amazon Linux (e.g. Amazon Linux 2023, built and optimized by AWS)',
+  'Ubuntu (Canonical)',
+  'Red Hat Enterprise Linux (RHEL)',
+  'SUSE Linux Enterprise Server (SLES)',
+  'Debian, CentOS, and other community or custom Linux',
+];
+
+/** Base monthly prices in NAD before 15% markup */
+const IAAS_TIERS = [
+  {
+    name: 'Starter',
+    tagline: 'For websites, staging & light workloads',
+    vcpu: '1 vCPU',
+    ram: '2 GB RAM',
+    storage: '40 GB SSD',
+    transfer: '1 TB transfer',
+    baseNad: 400,
+    featured: false,
+  },
+  {
+    name: 'Growth',
+    tagline: 'For growing apps & small teams',
+    vcpu: '2 vCPU',
+    ram: '4 GB RAM',
+    storage: '80 GB SSD',
+    transfer: '2 TB transfer',
+    baseNad: 850,
+    featured: true,
+  },
+  {
+    name: 'Business',
+    tagline: 'For production systems & APIs',
+    vcpu: '4 vCPU',
+    ram: '8 GB RAM',
+    storage: '160 GB SSD',
+    transfer: '4 TB transfer',
+    baseNad: 1600,
+    featured: false,
+  },
+  {
+    name: 'Enterprise',
+    tagline: 'For high-demand & multi-service stacks',
+    vcpu: '8 vCPU',
+    ram: '16 GB RAM',
+    storage: '320 GB SSD',
+    transfer: '8 TB transfer',
+    baseNad: 3200,
+    featured: false,
+  },
+];
+
+function formatNad(amount) {
+  return `N$ ${Math.round(amount).toLocaleString('en-NA')}`;
+}
+
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [projectsOpen, setProjectsOpen] = useState(false);
@@ -116,6 +174,9 @@ function App() {
                 <a href="#about" className="nav__link" onClick={closeMenu}>About Us</a>
               </li>
               <li className="nav__item">
+                <a href="#iaas" className="nav__link" onClick={closeMenu}>IaaS</a>
+              </li>
+              <li className="nav__item">
                 <a href="#team" className="nav__link" onClick={closeMenu}>Team</a>
               </li>
               <li className="nav__item">
@@ -212,6 +273,63 @@ function App() {
                 ]}
                 cta={{ href: '#contact', label: 'Partner With Us' }}
               />
+            </div>
+          </div>
+        </section>
+
+        <section id="iaas" className="section section--tint">
+          <div className="container">
+            <div className="section-header section-header--center reveal">
+              <p className="eyebrow"><span className="eyebrow__bar" />Services</p>
+              <h2 className="section-header__title">Infrastructure as a Service</h2>
+              <p className="section-header__subtitle">
+                Scalable Linux compute hosted for Namibian and SADC businesses — priced in Namibian Dollars
+                with managed infrastructure support.
+              </p>
+            </div>
+
+            <div className="iaas-intro reveal">
+              <h3 className="subheading">Linux Distributions</h3>
+              <ul className="iaas-distros">
+                {LINUX_DISTROS.map((distro) => (
+                  <li key={distro}>
+                    <span className="material-symbols-outlined" aria-hidden="true">check_circle</span>
+                    <span>{distro}</span>
+                  </li>
+                ))}
+              </ul>
+              <p className="iaas-pricing-note muted">
+                Prices below include a 15% service markup and are billed monthly in NAD.
+              </p>
+            </div>
+
+            <div className="iaas-grid reveal reveal--stagger">
+              {IAAS_TIERS.map((tier) => {
+                const price = tier.baseNad * IAAS_MARKUP;
+                return (
+                  <article
+                    className={`iaas-card${tier.featured ? ' iaas-card--featured' : ''}`}
+                    key={tier.name}
+                  >
+                    {tier.featured && <span className="iaas-card__badge">Popular</span>}
+                    <h3 className="iaas-card__name">{tier.name}</h3>
+                    <p className="iaas-card__tagline">{tier.tagline}</p>
+                    <p className="iaas-card__price">
+                      <span className="iaas-card__amount">{formatNad(price)}</span>
+                      <span className="iaas-card__period">/ month</span>
+                    </p>
+                    <ul className="iaas-card__specs">
+                      <li><span className="material-symbols-outlined">memory</span>{tier.vcpu}</li>
+                      <li><span className="material-symbols-outlined">database</span>{tier.ram}</li>
+                      <li><span className="material-symbols-outlined">hard_drive</span>{tier.storage}</li>
+                      <li><span className="material-symbols-outlined">sync_alt</span>{tier.transfer}</li>
+                    </ul>
+                    <a href="#contact" className={`btn ${tier.featured ? 'btn--accent' : 'btn--primary'} btn--block`}>
+                      Get Started
+                    </a>
+                  </article>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -598,6 +716,7 @@ function SiteFooter() {
           </div>
           <div className="footer__col">
             <h3>Solutions</h3>
+            <a href="/#iaas">Infrastructure as a Service</a>
             <a href="/#health-connect">Health Connect Namibia</a>
             <a href="/#namibride">NAMIBride</a>
           </div>

@@ -243,15 +243,14 @@ function App() {
                     address critical gaps in the market.
                   </p>
                   <p>
-                    Our mission is to leverage cutting-edge technology to transform traditional
-                    industries, making essential services more accessible, efficient, and reliable
-                    for all Namibians.
+                    We leverage cutting-edge technology to transform traditional industries, making
+                    essential services more accessible, efficient, and reliable for all Namibians.
                   </p>
                 </div>
                 <div className="stats reveal reveal--stagger">
                   <div className="stat">
                     <span className="stat__label">Active Projects</span>
-                    <span className="stat__value">2</span>
+                    <span className="stat__value">8</span>
                   </div>
                   <div className="stat">
                     <span className="stat__label">Namibian Owned</span>
@@ -273,6 +272,35 @@ function App() {
                 ]}
                 cta={{ href: '#contact', label: 'Partner With Us' }}
               />
+            </div>
+
+            <div className="about-pillars reveal reveal--stagger">
+              <article className="about-pillar">
+                <span className="about-pillar__icon material-symbols-outlined" aria-hidden="true">flag</span>
+                <h3>Mission</h3>
+                <p>
+                  To drive digital transformation and innovation across Africa — building intelligent,
+                  future-ready platforms that modernise industries and unlock opportunity for people and
+                  businesses.
+                </p>
+              </article>
+              <article className="about-pillar">
+                <span className="about-pillar__icon material-symbols-outlined" aria-hidden="true">visibility</span>
+                <h3>Vision</h3>
+                <p>
+                  To be Southern Africa&apos;s trusted partner for digital sovereignty — building
+                  world-class platforms that keep data, talent, and opportunity rooted in the region.
+                </p>
+              </article>
+              <article className="about-pillar">
+                <span className="about-pillar__icon material-symbols-outlined" aria-hidden="true">strategy</span>
+                <h3>Strategy</h3>
+                <p>
+                  Build and scale innovative digital solutions across sectors — from healthcare and
+                  mobility to infrastructure and beyond — while partnering locally and expanding proven
+                  platforms across Africa with cloud-native, secure systems.
+                </p>
+              </article>
             </div>
           </div>
         </section>

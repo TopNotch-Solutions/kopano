@@ -32,7 +32,7 @@ const IAAS_TIERS = [
     ram: '2 GB RAM',
     storage: '40 GB SSD',
     transfer: '1 TB transfer',
-    baseNad: 400,
+    baseNad: 600,
     featured: false,
   },
   {
@@ -42,7 +42,7 @@ const IAAS_TIERS = [
     ram: '4 GB RAM',
     storage: '80 GB SSD',
     transfer: '2 TB transfer',
-    baseNad: 850,
+    baseNad: 1150,
     featured: true,
   },
   {
@@ -52,7 +52,7 @@ const IAAS_TIERS = [
     ram: '8 GB RAM',
     storage: '160 GB SSD',
     transfer: '4 TB transfer',
-    baseNad: 1600,
+    baseNad: 2220,
     featured: false,
   },
   {
@@ -62,7 +62,7 @@ const IAAS_TIERS = [
     ram: '16 GB RAM',
     storage: '320 GB SSD',
     transfer: '8 TB transfer',
-    baseNad: 3200,
+    baseNad: 3800,
     featured: false,
   },
 ];
@@ -78,6 +78,7 @@ function App() {
   const pathname = typeof window !== 'undefined' ? window.location.pathname : '';
   const isPrivacyRoute = pathname === '/privacy';
   const isPoliciesRoute = pathname === '/policies';
+  const isHealthConnectGuideRoute = pathname === '/health-connect-guide';
 
   useEffect(() => {
     const onScroll = () => setNavSolid(window.scrollY > 24);
@@ -108,7 +109,7 @@ function App() {
     );
     document.querySelectorAll('.reveal, .section-header').forEach((el) => observer.observe(el));
     return () => observer.disconnect();
-  }, [isPrivacyRoute, isPoliciesRoute]);
+  }, [isPrivacyRoute, isPoliciesRoute, isHealthConnectGuideRoute]);
 
   const closeMenu = () => {
     setMenuOpen(false);
@@ -121,6 +122,10 @@ function App() {
 
   if (isPoliciesRoute) {
     return <PoliciesPage />;
+  }
+
+  if (isHealthConnectGuideRoute) {
+    return <HealthConnectGuidePage />;
   }
 
   return (
@@ -410,6 +415,12 @@ function App() {
                   <li className="tag">HealthTech / Telemedicine</li>
                   <li className="tag tag--status">In Development</li>
                 </ul>
+                <p className="guide-link-row">
+                  <a href="/health-connect-guide" className="btn btn--primary">
+                    <span className="material-symbols-outlined" aria-hidden="true">menu_book</span>
+                    Practitioner Guide
+                  </a>
+                </p>
               </div>
               <SpecCard
                 title="Project Infrastructure"
@@ -792,6 +803,66 @@ function LegalPageHeader() {
         </a>
       </div>
     </header>
+  );
+}
+
+const HEALTH_CONNECT_GUIDE_PDF = `${publicUrl}/Health_Connect_Practitioner_Full_Page_Portrait.pdf`;
+
+function HealthConnectGuidePage() {
+  return (
+    <div className="App">
+      <main className="guide-page">
+        <div className="container">
+          <div className="guide-hero">
+            <p className="eyebrow"><span className="eyebrow__bar" />Health Connect Namibia</p>
+            <h1 className="guide-hero__title">Practitioner Guide</h1>
+            <p className="guide-hero__text">
+              Preview the full practitioner guide below, or download the PDF for offline use.
+            </p>
+            <div className="guide-hero__actions">
+              <a
+                href={HEALTH_CONNECT_GUIDE_PDF}
+                className="btn-download-flow"
+                download="Health_Connect_Practitioner_Guide.pdf"
+              >
+                <span className="btn-download-flow__glow" aria-hidden="true" />
+                <span className="material-symbols-outlined" aria-hidden="true">download</span>
+                Download PDF
+              </a>
+              <a href="/" className="btn btn--primary">
+                <span className="material-symbols-outlined" aria-hidden="true">home</span>
+                Home
+              </a>
+            </div>
+          </div>
+
+          <div className="guide-preview">
+            <div className="guide-preview__toolbar">
+              <span className="guide-preview__label">
+                <span className="material-symbols-outlined" aria-hidden="true">picture_as_pdf</span>
+                Document preview
+              </span>
+              <a
+                href={HEALTH_CONNECT_GUIDE_PDF}
+                className="guide-preview__open"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Open in new tab
+              </a>
+            </div>
+            <div className="guide-preview__frame">
+              <iframe
+                title="Health Connect Practitioner Guide preview"
+                src={`${HEALTH_CONNECT_GUIDE_PDF}#toolbar=1&navpanes=0`}
+                className="guide-preview__iframe"
+              />
+            </div>
+          </div>
+        </div>
+      </main>
+      <SiteFooter />
+    </div>
   );
 }
 

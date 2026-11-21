@@ -1986,6 +1986,9 @@ a.contact-item__value:hover {
 /* Health Connect Guide page */
 .guide-link-row {
   margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
 .guide-link-row .btn {

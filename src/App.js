@@ -78,7 +78,8 @@ function App() {
   const pathname = typeof window !== 'undefined' ? window.location.pathname : '';
   const isPrivacyRoute = pathname === '/privacy';
   const isPoliciesRoute = pathname === '/policies';
-  const isHealthConnectGuideRoute = pathname === '/health-connect-guide';
+  const isHealthConnectProviderGuideRoute = pathname === '/health-connect-guide-provider';
+  const isHealthConnectPatientGuideRoute = pathname === '/health-connect-guide-patient';
 
   useEffect(() => {
     const onScroll = () => setNavSolid(window.scrollY > 24);
@@ -109,7 +110,7 @@ function App() {
     );
     document.querySelectorAll('.reveal, .section-header').forEach((el) => observer.observe(el));
     return () => observer.disconnect();
-  }, [isPrivacyRoute, isPoliciesRoute, isHealthConnectGuideRoute]);
+  }, [isPrivacyRoute, isPoliciesRoute, isHealthConnectProviderGuideRoute, isHealthConnectPatientGuideRoute]);
 
   const closeMenu = () => {
     setMenuOpen(false);
@@ -124,8 +125,12 @@ function App() {
     return <PoliciesPage />;
   }
 
-  if (isHealthConnectGuideRoute) {
-    return <HealthConnectGuidePage />;
+  if (isHealthConnectProviderGuideRoute) {
+    return <HealthConnectProviderGuidePage />;
+  }
+
+  if (isHealthConnectPatientGuideRoute) {
+    return <HealthConnectPatientGuidePage />;
   }
 
   return (
@@ -416,9 +421,13 @@ function App() {
                   <li className="tag tag--status">In Development</li>
                 </ul>
                 <p className="guide-link-row">
-                  <a href="/health-connect-guide" className="btn btn--primary">
+                  <a href="/health-connect-guide-provider" className="btn btn--primary">
                     <span className="material-symbols-outlined" aria-hidden="true">menu_book</span>
                     Practitioner Guide
+                  </a>
+                  <a href="/health-connect-guide-patient" className="btn btn--primary">
+                    <span className="material-symbols-outlined" aria-hidden="true">menu_book</span>
+                    Patient Guide
                   </a>
                 </p>
               </div>
@@ -806,24 +815,23 @@ function LegalPageHeader() {
   );
 }
 
-const HEALTH_CONNECT_GUIDE_PDF = `${publicUrl}/Health_Connect_Practitioner_Full_Page_Portrait.pdf`;
+const HEALTH_CONNECT_PROVIDER_GUIDE_PDF = `${publicUrl}/Health_Connect_Practitioner_Full_Page_Portrait.pdf`;
+const HEALTH_CONNECT_PATIENT_GUIDE_PDF = `${publicUrl}/Health_Connect_Namibia_Patient_Guide.pdf`;
 
-function HealthConnectGuidePage() {
+function GuidePage({ title, description, pdfUrl, downloadName, iframeTitle }) {
   return (
     <div className="App">
       <main className="guide-page">
         <div className="container">
           <div className="guide-hero">
             <p className="eyebrow"><span className="eyebrow__bar" />Health Connect Namibia</p>
-            <h1 className="guide-hero__title">Practitioner Guide</h1>
-            <p className="guide-hero__text">
-              Preview the full practitioner guide below, or download the PDF for offline use.
-            </p>
+            <h1 className="guide-hero__title">{title}</h1>
+            <p className="guide-hero__text">{description}</p>
             <div className="guide-hero__actions">
               <a
-                href={HEALTH_CONNECT_GUIDE_PDF}
+                href={pdfUrl}
                 className="btn-download-flow"
-                download="Health_Connect_Practitioner_Guide.pdf"
+                download={downloadName}
               >
                 <span className="btn-download-flow__glow" aria-hidden="true" />
                 <span className="material-symbols-outlined" aria-hidden="true">download</span>
@@ -843,7 +851,7 @@ function HealthConnectGuidePage() {
                 Document preview
               </span>
               <a
-                href={HEALTH_CONNECT_GUIDE_PDF}
+                href={pdfUrl}
                 className="guide-preview__open"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -853,8 +861,8 @@ function HealthConnectGuidePage() {
             </div>
             <div className="guide-preview__frame">
               <iframe
-                title="Health Connect Practitioner Guide preview"
-                src={`${HEALTH_CONNECT_GUIDE_PDF}#toolbar=1&navpanes=0`}
+                title={iframeTitle}
+                src={`${pdfUrl}#toolbar=1&navpanes=0`}
                 className="guide-preview__iframe"
               />
             </div>
@@ -863,6 +871,30 @@ function HealthConnectGuidePage() {
       </main>
       <SiteFooter />
     </div>
+  );
+}
+
+function HealthConnectProviderGuidePage() {
+  return (
+    <GuidePage
+      title="Practitioner Guide"
+      description="Preview the full practitioner guide below, or download the PDF for offline use."
+      pdfUrl={HEALTH_CONNECT_PROVIDER_GUIDE_PDF}
+      downloadName="Health_Connect_Practitioner_Guide.pdf"
+      iframeTitle="Health Connect Practitioner Guide preview"
+    />
+  );
+}
+
+function HealthConnectPatientGuidePage() {
+  return (
+    <GuidePage
+      title="Patient Guide"
+      description="Preview the full patient guide below, or download the PDF for offline use."
+      pdfUrl={HEALTH_CONNECT_PATIENT_GUIDE_PDF}
+      downloadName="Health_Connect_Namibia_Patient_Guide.pdf"
+      iframeTitle="Health Connect Patient Guide preview"
+    />
   );
 }
 

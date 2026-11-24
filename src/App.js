@@ -78,6 +78,7 @@ function App() {
   const pathname = typeof window !== 'undefined' ? window.location.pathname : '';
   const isPrivacyRoute = pathname === '/privacy';
   const isPoliciesRoute = pathname === '/policies';
+  const isTermsRoute = pathname === '/terms';
   const isHealthConnectProviderGuideRoute = pathname === '/health-connect-guide-provider';
   const isHealthConnectPatientGuideRoute = pathname === '/health-connect-guide-patient';
 
@@ -110,7 +111,7 @@ function App() {
     );
     document.querySelectorAll('.reveal, .section-header').forEach((el) => observer.observe(el));
     return () => observer.disconnect();
-  }, [isPrivacyRoute, isPoliciesRoute, isHealthConnectProviderGuideRoute, isHealthConnectPatientGuideRoute]);
+  }, [isPrivacyRoute, isPoliciesRoute, isTermsRoute, isHealthConnectProviderGuideRoute, isHealthConnectPatientGuideRoute]);
 
   const closeMenu = () => {
     setMenuOpen(false);
@@ -123,6 +124,10 @@ function App() {
 
   if (isPoliciesRoute) {
     return <PoliciesPage />;
+  }
+
+  if (isTermsRoute) {
+    return <TermsPage />;
   }
 
   if (isHealthConnectProviderGuideRoute) {
@@ -776,6 +781,7 @@ function SiteFooter() {
           </div>
           <div className="footer__col">
             <h3>Legal</h3>
+            <a href="/terms">Terms of Service</a>
             <a href="/privacy">Privacy Policy</a>
             <a href="/policies">App Store Policy</a>
           </div>
@@ -1084,6 +1090,332 @@ function PoliciesPage() {
               <li>Email: <a href="mailto:support@healthconnect.com.na">support@healthconnect.com.na</a></li>
               <li>Location: Windhoek, Namibia</li>
             </ul>
+          </article>
+        </div>
+      </main>
+      <SiteFooter />
+    </div>
+  );
+}
+
+function TermsPage() {
+  const sections = [
+    { id: 'acceptance', num: '01', title: 'Acceptance of Terms' },
+    { id: 'nature', num: '02', title: 'Nature of the Services' },
+    { id: 'practitioners', num: '03', title: 'Practitioner Liability' },
+    { id: 'accounts', num: '04', title: 'Accounts & Conduct' },
+    { id: 'payments', num: '05', title: 'Payments & Billing' },
+    { id: 'privacy', num: '06', title: 'Data Privacy' },
+    { id: 'ip', num: '07', title: 'Intellectual Property' },
+    { id: 'liability', num: '08', title: 'Limitation of Liability' },
+    { id: 'modifications', num: '09', title: 'Modifications' },
+    { id: 'governing-law', num: '10', title: 'Governing Law' },
+  ];
+
+  return (
+    <div className="App">
+      <LegalPageHeader />
+      <main className="terms-page">
+        <section className="terms-hero">
+          <div className="terms-hero__glow" aria-hidden="true" />
+          <div className="container terms-hero__inner">
+            <p className="eyebrow eyebrow--light">
+              <span className="eyebrow__bar" />
+              Legal Agreement
+            </p>
+            <h1 className="terms-hero__title">Terms of Service</h1>
+            <p className="terms-hero__lede">
+              The agreement governing use of Kopano-Vertex Trading CC websites, apps, and digital platforms —
+              including Health Connect Namibia.
+            </p>
+            <div className="terms-meta">
+              <div className="terms-meta__item">
+                <span className="terms-meta__label">Effective</span>
+                <span className="terms-meta__value">November 24, 2026</span>
+              </div>
+              <div className="terms-meta__item">
+                <span className="terms-meta__label">Registration</span>
+                <span className="terms-meta__value">CC/2025/09693</span>
+              </div>
+              <div className="terms-meta__item">
+                <span className="terms-meta__label">Entity</span>
+                <span className="terms-meta__value">Kopano-Vertex Trading CC</span>
+              </div>
+              <div className="terms-meta__item">
+                <span className="terms-meta__label">Jurisdiction</span>
+                <span className="terms-meta__value">Republic of Namibia</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div className="container terms-layout">
+          <aside className="terms-toc" aria-label="Table of contents">
+            <p className="terms-toc__title">Contents</p>
+            <nav className="terms-toc__nav">
+              {sections.map((section) => (
+                <a key={section.id} href={`#${section.id}`} className="terms-toc__link">
+                  <span className="terms-toc__num">{section.num}</span>
+                  <span>{section.title}</span>
+                </a>
+              ))}
+            </nav>
+          </aside>
+
+          <article className="terms-content">
+            <section id="acceptance" className="terms-section">
+              <header className="terms-section__head">
+                <span className="terms-section__num">01</span>
+                <h2>Acceptance of Terms</h2>
+              </header>
+              <p>
+                By accessing or using any website, mobile application, or digital software service operated by
+                Kopano-Vertex Trading CC (&quot;Company,&quot; &quot;we,&quot; &quot;us,&quot; or &quot;our&quot;), including Health Connect
+                Namibia and related enterprise platforms (collectively, the &quot;Services&quot;), you (&quot;User,&quot; &quot;Patient,&quot; or
+                &quot;Service Provider&quot;) agree to be bound by these Terms of Service (&quot;Terms&quot;). If you do not agree to
+                these Terms, do not access or use the Services.
+              </p>
+            </section>
+
+            <section id="nature" className="terms-section">
+              <header className="terms-section__head">
+                <span className="terms-section__num">02</span>
+                <h2>Nature of the Services &amp; Platform Role</h2>
+              </header>
+              <div className="terms-points">
+                <div className="terms-point">
+                  <h3>Technology Facilitator Only</h3>
+                  <p>
+                    Kopano-Vertex Trading CC develops and operates digital software and marketplace platforms that
+                    facilitate scheduling, administrative coordination, and communication between independent
+                    third-party service providers and end users.
+                  </p>
+                </div>
+                <div className="terms-point">
+                  <h3>No Direct Medical or Clinical Care</h3>
+                  <p>
+                    Where our Services connect users with healthcare professionals, Kopano-Vertex Trading CC is
+                    strictly a non-emergency technology intermediary. We do not provide medical advice, clinical
+                    diagnosis, treatment, or emergency medical response.
+                  </p>
+                </div>
+              </div>
+              <div className="terms-callout" role="note">
+                <span className="material-symbols-outlined" aria-hidden="true">emergency</span>
+                <div>
+                  <strong>Emergency Disclaimer</strong>
+                  <p>
+                    Do not use our platforms for life-threatening or medical emergencies. In an emergency, contact
+                    local emergency medical services or visit the nearest hospital immediately.
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            <section id="practitioners" className="terms-section">
+              <header className="terms-section__head">
+                <span className="terms-section__num">03</span>
+                <h2>Independent Contractor Status &amp; Practitioner Liability</h2>
+              </header>
+              <div className="terms-points">
+                <div className="terms-point">
+                  <h3>Independent Practitioners</h3>
+                  <p>
+                    All healthcare practitioners, consultants, and third-party specialists accessible through our
+                    Services operate as independent contractors and are not employees, agents, or partners of
+                    Kopano-Vertex Trading CC.
+                  </p>
+                </div>
+                <div className="terms-point">
+                  <h3>Regulatory Compliance &amp; Liability</h3>
+                  <p>
+                    Healthcare practitioners using the platform warrant that they hold active, valid registration with
+                    the Health Professions Councils of Namibia (HPCNA) and any other applicable statutory bodies. Each
+                    practitioner assumes full personal, clinical, and professional liability for all consultations,
+                    diagnoses, prescriptions, and treatments rendered, and indemnifies Kopano-Vertex Trading CC against
+                    any claims, damages, or losses arising from their professional practice.
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            <section id="accounts" className="terms-section">
+              <header className="terms-section__head">
+                <span className="terms-section__num">04</span>
+                <h2>User Accounts, Conduct &amp; Account Deletion</h2>
+              </header>
+              <div className="terms-points">
+                <div className="terms-point">
+                  <h3>Registration &amp; Accuracy</h3>
+                  <p>
+                    You must provide accurate, current, and complete information when creating an account and keep
+                    your login credentials secure.
+                  </p>
+                </div>
+                <div className="terms-point">
+                  <h3>Prohibited Conduct</h3>
+                  <p>
+                    You agree not to copy, reverse-engineer, decompile, scrape, resell, or exploit any part of our
+                    software, source code, or APIs, nor use the Services for unlawful, fraudulent, or abusive purposes.
+                  </p>
+                </div>
+                <div className="terms-point">
+                  <h3>Account Termination &amp; Deletion</h3>
+                  <p>
+                    You may request deletion of your account and associated personal profile data at any time through
+                    the in-app account settings or by emailing our support team at{' '}
+                    <a href="mailto:support@kopanovertex.org">support@kopanovertex.org</a>. We reserve the right to
+                    suspend or terminate accounts that violate these Terms or applicable Namibian law.
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            <section id="payments" className="terms-section">
+              <header className="terms-section__head">
+                <span className="terms-section__num">05</span>
+                <h2>Payments, Subscriptions &amp; Billing</h2>
+              </header>
+              <div className="terms-points">
+                <div className="terms-point">
+                  <h3>No Custodial Wallets</h3>
+                  <p>
+                    Kopano-Vertex Trading CC does not operate custodial user wallets or hold user funds in escrow.
+                  </p>
+                </div>
+                <div className="terms-point">
+                  <h3>Payment Processing</h3>
+                  <p>
+                    Platform subscription fees, prepaid practitioner credit packages, and approved third-party payment
+                    integrations are processed securely through authorized payment gateways (such as PayGate/Payfast,
+                    DPO, or direct institutional clearing). Any commercial fees, refunds, or medical aid claims (such as
+                    NAMAF-coded billing workflows) are subject to the specific service tier selected at checkout and
+                    applicable Namibian consumer protection rules.
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            <section id="privacy" className="terms-section">
+              <header className="terms-section__head">
+                <span className="terms-section__num">06</span>
+                <h2>Data Privacy &amp; Record Retention</h2>
+              </header>
+              <div className="terms-points">
+                <div className="terms-point">
+                  <h3>Minimal Data Architecture</h3>
+                  <p>
+                    In accordance with our privacy-by-design standards, we do not store patient clinical records or
+                    health cards on our consumer marketplace servers. Platform logs are restricted to administrative
+                    attendance, booking timestamps, and audit trails required for operational integrity and statutory
+                    compliance.
+                  </p>
+                </div>
+                <div className="terms-point">
+                  <h3>Data Protection</h3>
+                  <p>
+                    Personal information is processed in accordance with our{' '}
+                    <a href="/privacy">Privacy Policy</a> and applicable data protection laws of the Republic of Namibia.
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            <section id="ip" className="terms-section">
+              <header className="terms-section__head">
+                <span className="terms-section__num">07</span>
+                <h2>Intellectual Property Rights</h2>
+              </header>
+              <p>
+                All software, source code, user interfaces, trademarks, logos, databases, and content associated with
+                Kopano-Vertex Trading CC and its platforms are the exclusive intellectual property of Kopano-Vertex
+                Trading CC and are protected under Namibian and international copyright and intellectual property laws.
+              </p>
+            </section>
+
+            <section id="liability" className="terms-section">
+              <header className="terms-section__head">
+                <span className="terms-section__num">08</span>
+                <h2>Limitation of Liability &amp; Service Availability</h2>
+              </header>
+              <div className="terms-points">
+                <div className="terms-point">
+                  <h3>As-Is Basis</h3>
+                  <p>
+                    The Services are provided on an &quot;as-is&quot; and &quot;as-available&quot; basis. While we strive for high
+                    availability, we do not warrant uninterrupted access and are not liable for network outages, mobile
+                    data charges, or third-party service disruptions.
+                  </p>
+                </div>
+                <div className="terms-point">
+                  <h3>Limitation of Damages</h3>
+                  <p>
+                    To the maximum extent permitted by Namibian law, Kopano-Vertex Trading CC shall not be liable for any
+                    indirect, incidental, special, or consequential damages arising out of your use of—or inability to
+                    use—the Services, or from interactions with independent third-party service providers.
+                  </p>
+                </div>
+                <div className="terms-point">
+                  <h3>Statutory Rights</h3>
+                  <p>
+                    Nothing in these Terms excludes or limits any mandatory statutory consumer rights you may have under
+                    applicable law.
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            <section id="modifications" className="terms-section">
+              <header className="terms-section__head">
+                <span className="terms-section__num">09</span>
+                <h2>Modifications to Terms</h2>
+              </header>
+              <p>
+                We may update these Terms from time to time to reflect operational, legal, or regulatory changes.
+                Updated Terms will be posted with a revised Effective Date. Continued use of the Services after changes
+                are posted constitutes acceptance of the revised Terms.
+              </p>
+            </section>
+
+            <section id="governing-law" className="terms-section">
+              <header className="terms-section__head">
+                <span className="terms-section__num">10</span>
+                <h2>Governing Law &amp; Contact Information</h2>
+              </header>
+              <p>
+                These Terms are governed by and construed in accordance with the laws of the Republic of Namibia, and
+                any disputes shall be subject to the exclusive jurisdiction of the courts of Namibia.
+              </p>
+
+              <div className="terms-contact">
+                <div className="terms-contact__intro">
+                  <h3>Official Entity &amp; Support</h3>
+                  <p>Reach the registered entity for questions about these Terms.</p>
+                </div>
+                <dl className="terms-contact__grid">
+                  <div>
+                    <dt>Registered Entity</dt>
+                    <dd>Kopano-Vertex Trading CC (CC/2025/09693)</dd>
+                  </div>
+                  <div>
+                    <dt>Registered Location</dt>
+                    <dd>Windhoek, Republic of Namibia</dd>
+                  </div>
+                  <div>
+                    <dt>Support Email</dt>
+                    <dd>
+                      <a href="mailto:support@kopanovertex.org">support@kopanovertex.org</a>
+                    </dd>
+                  </div>
+                  <div>
+                    <dt>Support Telephone</dt>
+                    <dd>
+                      <a href="tel:+264814302536">+264 81 430 2536</a>
+                    </dd>
+                  </div>
+                </dl>
+              </div>
+            </section>
           </article>
         </div>
       </main>

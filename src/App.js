@@ -79,8 +79,10 @@ function App() {
   const isPrivacyRoute = pathname === '/privacy';
   const isPoliciesRoute = pathname === '/policies';
   const isTermsRoute = pathname === '/terms';
-  const isHealthConnectProviderGuideRoute = pathname === '/health-connect-guide-provider';
-  const isHealthConnectPatientGuideRoute = pathname === '/health-connect-guide-patient';
+  const isHealthConnectGuideRoute =
+    pathname === '/health-connect-guide' ||
+    pathname === '/health-connect-guide-provider' ||
+    pathname === '/health-connect-guide-patient';
 
   useEffect(() => {
     const onScroll = () => setNavSolid(window.scrollY > 24);
@@ -111,7 +113,7 @@ function App() {
     );
     document.querySelectorAll('.reveal, .section-header').forEach((el) => observer.observe(el));
     return () => observer.disconnect();
-  }, [isPrivacyRoute, isPoliciesRoute, isTermsRoute, isHealthConnectProviderGuideRoute, isHealthConnectPatientGuideRoute]);
+  }, [isPrivacyRoute, isPoliciesRoute, isTermsRoute, isHealthConnectGuideRoute]);
 
   const closeMenu = () => {
     setMenuOpen(false);
@@ -130,12 +132,13 @@ function App() {
     return <TermsPage />;
   }
 
-  if (isHealthConnectProviderGuideRoute) {
-    return <HealthConnectProviderGuidePage />;
-  }
-
-  if (isHealthConnectPatientGuideRoute) {
-    return <HealthConnectPatientGuidePage />;
+  if (isHealthConnectGuideRoute) {
+    const initialGuide =
+      pathname === '/health-connect-guide-patient' ||
+      (typeof window !== 'undefined' && window.location.hash === '#patient')
+        ? 'patient'
+        : 'provider';
+    return <HealthConnectGuidePage initialGuide={initialGuide} />;
   }
 
   return (
@@ -426,13 +429,9 @@ function App() {
                   <li className="tag tag--status">In Development</li>
                 </ul>
                 <p className="guide-link-row">
-                  <a href="/health-connect-guide-provider" className="btn btn--primary">
+                  <a href="/health-connect-guide" className="btn btn--primary">
                     <span className="material-symbols-outlined" aria-hidden="true">menu_book</span>
-                    Practitioner Guide
-                  </a>
-                  <a href="/health-connect-guide-patient" className="btn btn--primary">
-                    <span className="material-symbols-outlined" aria-hidden="true">menu_book</span>
-                    Patient Guide
+                    View Guides
                   </a>
                 </p>
               </div>
@@ -821,27 +820,72 @@ function LegalPageHeader() {
   );
 }
 
-const HEALTH_CONNECT_PROVIDER_GUIDE_PDF = `${publicUrl}/Health_Connect_Practitioner_Full_Page_Portrait.pdf`;
-const HEALTH_CONNECT_PATIENT_GUIDE_PDF = `${publicUrl}/Health_Connect_Namibia_Patient_Guide.pdf`;
+const HEALTH_CONNECT_GUIDES = {
+  provider: {
+    id: 'provider',
+    label: 'Practitioner',
+    title: 'Practitioner Guide',
+    pdfUrl: `${publicUrl}/Health_Connect_Practitioner_Full_Page_Portrait.pdf`,
+    downloadName: 'Health_Connect_Practitioner_Guide.pdf',
+    iframeTitle: 'Health Connect Practitioner Guide preview',
+  },
+  patient: {
+    id: 'patient',
+    label: 'Patient',
+    title: 'Patient Guide',
+    pdfUrl: `${publicUrl}/Health_Connect_Namibia_Patient_Guide.pdf`,
+    downloadName: 'Health_Connect_Namibia_Patient_Guide.pdf',
+    iframeTitle: 'Health Connect Patient Guide preview',
+  },
+};
 
-function GuidePage({ title, description, pdfUrl, downloadName, iframeTitle }) {
+function HealthConnectGuidePage({ initialGuide = 'provider' }) {
+  const [activeGuide, setActiveGuide] = useState(
+    HEALTH_CONNECT_GUIDES[initialGuide] ? initialGuide : 'provider'
+  );
+  const guide = HEALTH_CONNECT_GUIDES[activeGuide];
+
+  const selectGuide = (guideId) => {
+    setActiveGuide(guideId);
+    if (typeof window !== 'undefined') {
+      const nextUrl = `/health-connect-guide#${guideId === 'patient' ? 'patient' : 'provider'}`;
+      window.history.replaceState(null, '', nextUrl);
+    }
+  };
+
   return (
     <div className="App">
       <main className="guide-page">
         <div className="container">
           <div className="guide-hero">
             <p className="eyebrow"><span className="eyebrow__bar" />Health Connect Namibia</p>
-            <h1 className="guide-hero__title">{title}</h1>
-            <p className="guide-hero__text">{description}</p>
+            <h1 className="guide-hero__title">Guides</h1>
+            <p className="guide-hero__text">
+              Choose a guide to preview online, or download the PDF for offline use.
+            </p>
+            <div className="guide-tabs" role="tablist" aria-label="Guide type">
+              {Object.values(HEALTH_CONNECT_GUIDES).map((item) => (
+                <button
+                  key={item.id}
+                  type="button"
+                  role="tab"
+                  aria-selected={activeGuide === item.id}
+                  className={`guide-tab${activeGuide === item.id ? ' guide-tab--active' : ''}`}
+                  onClick={() => selectGuide(item.id)}
+                >
+                  {item.label}
+                </button>
+              ))}
+            </div>
             <div className="guide-hero__actions">
               <a
-                href={pdfUrl}
+                href={guide.pdfUrl}
                 className="btn-download-flow"
-                download={downloadName}
+                download={guide.downloadName}
               >
                 <span className="btn-download-flow__glow" aria-hidden="true" />
                 <span className="material-symbols-outlined" aria-hidden="true">download</span>
-                Download PDF
+                Download {guide.label} PDF
               </a>
               <a href="/" className="btn btn--primary">
                 <span className="material-symbols-outlined" aria-hidden="true">home</span>
@@ -854,10 +898,10 @@ function GuidePage({ title, description, pdfUrl, downloadName, iframeTitle }) {
             <div className="guide-preview__toolbar">
               <span className="guide-preview__label">
                 <span className="material-symbols-outlined" aria-hidden="true">picture_as_pdf</span>
-                Document preview
+                {guide.title} preview
               </span>
               <a
-                href={pdfUrl}
+                href={guide.pdfUrl}
                 className="guide-preview__open"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -867,8 +911,9 @@ function GuidePage({ title, description, pdfUrl, downloadName, iframeTitle }) {
             </div>
             <div className="guide-preview__frame">
               <iframe
-                title={iframeTitle}
-                src={`${pdfUrl}#toolbar=1&navpanes=0`}
+                key={guide.id}
+                title={guide.iframeTitle}
+                src={`${guide.pdfUrl}#toolbar=1&navpanes=0`}
                 className="guide-preview__iframe"
               />
             </div>
@@ -877,30 +922,6 @@ function GuidePage({ title, description, pdfUrl, downloadName, iframeTitle }) {
       </main>
       <SiteFooter />
     </div>
-  );
-}
-
-function HealthConnectProviderGuidePage() {
-  return (
-    <GuidePage
-      title="Practitioner Guide"
-      description="Preview the full practitioner guide below, or download the PDF for offline use."
-      pdfUrl={HEALTH_CONNECT_PROVIDER_GUIDE_PDF}
-      downloadName="Health_Connect_Practitioner_Guide.pdf"
-      iframeTitle="Health Connect Practitioner Guide preview"
-    />
-  );
-}
-
-function HealthConnectPatientGuidePage() {
-  return (
-    <GuidePage
-      title="Patient Guide"
-      description="Preview the full patient guide below, or download the PDF for offline use."
-      pdfUrl={HEALTH_CONNECT_PATIENT_GUIDE_PDF}
-      downloadName="Health_Connect_Namibia_Patient_Guide.pdf"
-      iframeTitle="Health Connect Patient Guide preview"
-    />
   );
 }
 
